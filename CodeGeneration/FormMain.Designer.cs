@@ -75,6 +75,7 @@
       this.buttonPickSourceFile = new System.Windows.Forms.Button();
       this.comboBoxCodeLanguage = new System.Windows.Forms.ComboBox();
       this.labelComboLanguage = new System.Windows.Forms.Label();
+      this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -336,7 +337,7 @@
       // buttonGenerateFile
       // 
       this.buttonGenerateFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonGenerateFile.Location = new System.Drawing.Point(111, 323);
+      this.buttonGenerateFile.Location = new System.Drawing.Point(123, 321);
       this.buttonGenerateFile.Name = "buttonGenerateFile";
       this.buttonGenerateFile.Size = new System.Drawing.Size(156, 33);
       this.buttonGenerateFile.TabIndex = 25;
@@ -347,12 +348,13 @@
       // checkBoxTargetFile
       // 
       this.checkBoxTargetFile.AutoSize = true;
-      this.checkBoxTargetFile.Location = new System.Drawing.Point(111, 117);
+      this.checkBoxTargetFile.Location = new System.Drawing.Point(123, 117);
       this.checkBoxTargetFile.Name = "checkBoxTargetFile";
       this.checkBoxTargetFile.Size = new System.Drawing.Size(346, 21);
       this.checkBoxTargetFile.TabIndex = 24;
       this.checkBoxTargetFile.Text = "Target file in the same directory as the source file.";
       this.checkBoxTargetFile.UseVisualStyleBackColor = true;
+      this.checkBoxTargetFile.CheckedChanged += new System.EventHandler(this.checkBoxTargetFile_CheckedChanged);
       // 
       // labelTargetFile
       // 
@@ -366,9 +368,9 @@
       // 
       // textBoxTargetFile
       // 
-      this.textBoxTargetFile.Location = new System.Drawing.Point(111, 155);
+      this.textBoxTargetFile.Location = new System.Drawing.Point(123, 155);
       this.textBoxTargetFile.Name = "textBoxTargetFile";
-      this.textBoxTargetFile.Size = new System.Drawing.Size(739, 22);
+      this.textBoxTargetFile.Size = new System.Drawing.Size(727, 22);
       this.textBoxTargetFile.TabIndex = 22;
       // 
       // buttonTargetDirectory
@@ -393,9 +395,9 @@
       // 
       // textBoxTextAfter
       // 
-      this.textBoxTextAfter.Location = new System.Drawing.Point(111, 273);
+      this.textBoxTextAfter.Location = new System.Drawing.Point(123, 273);
       this.textBoxTextAfter.Name = "textBoxTextAfter";
-      this.textBoxTextAfter.Size = new System.Drawing.Size(739, 22);
+      this.textBoxTextAfter.Size = new System.Drawing.Size(727, 22);
       this.textBoxTextAfter.TabIndex = 19;
       // 
       // labelTextBefore
@@ -410,9 +412,9 @@
       // 
       // textBoxTextBefore
       // 
-      this.textBoxTextBefore.Location = new System.Drawing.Point(111, 212);
+      this.textBoxTextBefore.Location = new System.Drawing.Point(123, 212);
       this.textBoxTextBefore.Name = "textBoxTextBefore";
-      this.textBoxTextBefore.Size = new System.Drawing.Size(739, 22);
+      this.textBoxTextBefore.Size = new System.Drawing.Size(727, 22);
       this.textBoxTextBefore.TabIndex = 17;
       // 
       // labelSourceFile
@@ -427,9 +429,9 @@
       // 
       // textBoxSourceFile
       // 
-      this.textBoxSourceFile.Location = new System.Drawing.Point(111, 74);
+      this.textBoxSourceFile.Location = new System.Drawing.Point(123, 74);
       this.textBoxSourceFile.Name = "textBoxSourceFile";
-      this.textBoxSourceFile.Size = new System.Drawing.Size(739, 22);
+      this.textBoxSourceFile.Size = new System.Drawing.Size(727, 22);
       this.textBoxSourceFile.TabIndex = 15;
       // 
       // buttonPickSourceFile
@@ -445,7 +447,7 @@
       // comboBoxCodeLanguage
       // 
       this.comboBoxCodeLanguage.FormattingEnabled = true;
-      this.comboBoxCodeLanguage.Location = new System.Drawing.Point(546, 117);
+      this.comboBoxCodeLanguage.Location = new System.Drawing.Point(558, 117);
       this.comboBoxCodeLanguage.Name = "comboBoxCodeLanguage";
       this.comboBoxCodeLanguage.Size = new System.Drawing.Size(121, 24);
       this.comboBoxCodeLanguage.TabIndex = 26;
@@ -454,7 +456,7 @@
       // 
       this.labelComboLanguage.AutoSize = true;
       this.labelComboLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelComboLanguage.Location = new System.Drawing.Point(463, 118);
+      this.labelComboLanguage.Location = new System.Drawing.Point(475, 118);
       this.labelComboLanguage.Name = "labelComboLanguage";
       this.labelComboLanguage.Size = new System.Drawing.Size(85, 17);
       this.labelComboLanguage.TabIndex = 27;
@@ -542,5 +544,6 @@
     private System.Windows.Forms.Button buttonPickSourceFile;
     private System.Windows.Forms.ComboBox comboBoxCodeLanguage;
     private System.Windows.Forms.Label labelComboLanguage;
+    private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
   }
 }

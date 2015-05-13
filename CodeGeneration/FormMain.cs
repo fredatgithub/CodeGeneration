@@ -355,18 +355,135 @@ namespace CodeGeneration
 
     private void buttonPickSourceFile_Click(object sender, EventArgs e)
     {
-      OpenFileDialog ofd = new OpenFileDialog();
+      var opendialog = new OpenFileDialog
+      { Filter = @"Code files(*.cs; *.cpp; *.vb)| *.cs; *.cpp; *.vb" };
+      if (opendialog.ShowDialog() == DialogResult.OK)
+      {
+        textBoxSourceFile.Text = opendialog.FileName;
+      }
     }
 
     private void buttonTargetDirectory_Click(object sender, EventArgs e)
     {
       // choose a directory
+      if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+      {
+        textBoxTargetFile.Text = folderBrowserDialog1.SelectedPath;
+      }
     }
 
     private void buttonGenerateFile_Click(object sender, EventArgs e)
     {
       // verify prerequisite and generate the target file
+      if (textBoxSourceFile.Text == string.Empty &&
+        textBoxTargetFile.Text == string.Empty)
+      {
+        DisplayMsg("There is nothing to add either before or after each line", "no modification",
+          MessageBoxButtons.OK);
+        return;
+      }
 
+      if (textBoxSourceFile.Text == string.Empty)
+      {
+        DisplayMsg("Choose a code file", "No code file", MessageBoxButtons.OK);
+        return;
+      }
+
+      if (textBoxTargetFile.Text == string.Empty)
+      {
+        DisplayMsg("Choose a target directory", "No target directory", MessageBoxButtons.OK);
+        return;
+      }
+
+      if (!Directory.Exists(textBoxTargetFile.Text))
+      {
+        DisplayMsg("The target directory doesn't exist", "No Target directory", MessageBoxButtons.OK);
+        return;
+      }
+
+      if (!File.Exists(textBoxSourceFile.Text))
+      {
+        DisplayMsg("The source file doesn't exist", "No source file", MessageBoxButtons.OK);
+        return;
+      }
+
+      //reading the source file
+      List<string> sourceFile = new List<string>();
+      StreamReader sr = new StreamReader(textBoxSourceFile.Text);
+      while (!sr.EndOfStream)
+      {
+        sourceFile.Add(sr.ReadLine());
+      }
+
+      sr.Close();
+      // writing the file
+      string savedFile = Path.Combine(textBoxTargetFile.Text,
+        Path.GetFileNameWithoutExtension(textBoxSourceFile.Text) + "2." +
+        Path.GetExtension(textBoxSourceFile.Text));
+      StreamWriter sw = new StreamWriter(savedFile);
+      foreach (string line in sourceFile)
+      {
+        // write after spaces if any TODO
+        sw.WriteLine(textBoxTextBefore.Text + line + textBoxTextAfter.Text);
+      }
+
+      sw.Close();
+      var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?", "Code File created", MessageBoxButtons.YesNo);
+      if (DialogResult == DialogResult.Yes)
+      {
+        Process.Start(savedFile); // TODO debug open the file with notepad.exe
+      }
+    }
+
+    private void checkBoxTargetFile_CheckedChanged(object sender, EventArgs e)
+    {
+      if (checkBoxTargetFile.Checked)
+      {
+        if (textBoxSourceFile.Text == string.Empty)
+        {
+          DisplayMsg("Choose a code file first", "No source directory", MessageBoxButtons.OK);
+          checkBoxTargetFile.Checked = false;
+          return;
+        }
+        else
+        {
+          if (!Directory.Exists(RemoveFileNameFromDirectory(textBoxSourceFile.Text)))
+          {
+            DisplayMsg("The source directory doesn't exist", "No Source directory", MessageBoxButtons.OK);
+            checkBoxTargetFile.Checked = false;
+            return;
+          }
+          else
+          {
+            textBoxTargetFile.Text = RemoveFileNameFromDirectory(textBoxSourceFile.Text);
+          }
+        }
+      }
+    }
+
+    private string RemoveFileNameFromDirectory(string filePath)
+    {
+      return Path.GetDirectoryName(filePath);
+    }
+
+    private DialogResult DisplayMessage(string message, string title, MessageBoxButtons buttons)
+    {
+      DialogResult result = MessageBox.Show(this, message, title, buttons);
+      return result;
+    }
+
+    private void DisplayMsg(string message, string title, MessageBoxButtons buttons)
+    {
+      DialogResult result = MessageBox.Show(this, message, title, buttons);
+    }
+
+    private static string[] GetDirectoryFileNameAndExtension(string filePath)
+    {
+      string directory = Path.GetDirectoryName(filePath);
+      string fileName = Path.GetFileNameWithoutExtension(filePath);
+      string extension = Path.GetExtension(filePath);
+
+      return new[] { directory, fileName, extension };
     }
   }
 }
