@@ -43,13 +43,13 @@ namespace CodeGeneration
     private bool trimEndCode;
     private bool placeAfterSpaces;
 
-    private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+    private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
       SaveWindowValue();
       Application.Exit();
     }
 
-    private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void AboutToolStripMenuItemClick(object sender, EventArgs e)
     {
       AboutBoxApplication aboutBoxApplication = new AboutBoxApplication();
       aboutBoxApplication.ShowDialog();
@@ -62,7 +62,7 @@ namespace CodeGeneration
       Text += string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart, fvi.FilePrivatePart);
     }
 
-    private void FormMain_Load(object sender, EventArgs e)
+    private void FormMainLoad(object sender, EventArgs e)
     {
       DisplayTitle();
       GetWindowValue();
@@ -276,12 +276,12 @@ namespace CodeGeneration
       SaveWindowValue();
     }
 
-    private void frenchToolStripMenuItem_Click(object sender, EventArgs e)
+    private void FrenchToolStripMenuItemClick(object sender, EventArgs e)
     {
       SetLanguage(Language.French.ToString());
     }
 
-    private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+    private void EnglishToolStripMenuItemClick(object sender, EventArgs e)
     {
       SetLanguage(Language.English.ToString());
     }
@@ -356,7 +356,7 @@ namespace CodeGeneration
       }
     }
 
-    private void buttonPickSourceFile_Click(object sender, EventArgs e)
+    private void ButtonPickSourceFileClick(object sender, EventArgs e)
     {
       var opendialog = new OpenFileDialog
       { Filter = @"Code files(*.cs; *.cpp; *.vb)| *.cs; *.cpp; *.vb" };
@@ -366,7 +366,7 @@ namespace CodeGeneration
       }
     }
 
-    private void buttonTargetDirectory_Click(object sender, EventArgs e)
+    private void ButtonTargetDirectoryClick(object sender, EventArgs e)
     {
       // choose a directory
       if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
@@ -375,7 +375,7 @@ namespace CodeGeneration
       }
     }
 
-    private void buttonGenerateFile_Click(object sender, EventArgs e)
+    private void ButtonGenerateFileClick(object sender, EventArgs e)
     {
       // verify prerequisite and generate the target file
       if (textBoxSourceFile.Text == string.Empty &&
@@ -451,7 +451,7 @@ namespace CodeGeneration
       }
     }
 
-    private void checkBoxTargetFile_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxTargetFileCheckedChanged(object sender, EventArgs e)
     {
       if (checkBoxTargetFile.Checked)
       {
@@ -502,17 +502,17 @@ namespace CodeGeneration
       return new[] { directory, fileName, extension };
     }
 
-    private void checkBoxRemoveStartingSpaces_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxRemoveStartingSpacesCheckedChanged(object sender, EventArgs e)
     {
       trimStartCode = checkBoxRemoveStartingSpaces.Checked;
     }
 
-    private void checkBoxRemoveEndingSpaces_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxRemoveEndingSpacesCheckedChanged(object sender, EventArgs e)
     {
       trimEndCode = checkBoxRemoveEndingSpaces.Checked;
     }
 
-    private void checkBoxPlaceAfterSpaces_CheckedChanged(object sender, EventArgs e)
+    private void CheckBoxPlaceAfterSpacesCheckedChanged(object sender, EventArgs e)
     {
       placeAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
     }

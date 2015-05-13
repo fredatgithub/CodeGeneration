@@ -180,7 +180,7 @@
       this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
       this.quitToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
       this.quitToolStripMenuItem.Text = "&Quitter";
-      this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
+      this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItemClick);
       // 
       // editToolStripMenuItem
       // 
@@ -286,14 +286,14 @@
       this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
       this.frenchToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
       this.frenchToolStripMenuItem.Text = "Français";
-      this.frenchToolStripMenuItem.Click += new System.EventHandler(this.frenchToolStripMenuItem_Click);
+      this.frenchToolStripMenuItem.Click += new System.EventHandler(this.FrenchToolStripMenuItemClick);
       // 
       // englishToolStripMenuItem
       // 
       this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
       this.englishToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
       this.englishToolStripMenuItem.Text = "Anglais";
-      this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+      this.englishToolStripMenuItem.Click += new System.EventHandler(this.EnglishToolStripMenuItemClick);
       // 
       // helpToolStripMenuItem
       // 
@@ -335,7 +335,7 @@
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
       this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
       this.aboutToolStripMenuItem.Text = "À &propos de...";
-      this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+      this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
       // 
       // buttonGenerateFile
       // 
@@ -347,7 +347,7 @@
       this.buttonGenerateFile.TabIndex = 25;
       this.buttonGenerateFile.Text = "Generate the file";
       this.buttonGenerateFile.UseVisualStyleBackColor = true;
-      this.buttonGenerateFile.Click += new System.EventHandler(this.buttonGenerateFile_Click);
+      this.buttonGenerateFile.Click += new System.EventHandler(this.ButtonGenerateFileClick);
       // 
       // checkBoxTargetFile
       // 
@@ -359,7 +359,7 @@
       this.checkBoxTargetFile.TabIndex = 24;
       this.checkBoxTargetFile.Text = "Target file in the same directory as the source file.";
       this.checkBoxTargetFile.UseVisualStyleBackColor = true;
-      this.checkBoxTargetFile.CheckedChanged += new System.EventHandler(this.checkBoxTargetFile_CheckedChanged);
+      this.checkBoxTargetFile.CheckedChanged += new System.EventHandler(this.CheckBoxTargetFileCheckedChanged);
       // 
       // labelTargetFile
       // 
@@ -389,7 +389,7 @@
       this.buttonTargetDirectory.TabIndex = 21;
       this.buttonTargetDirectory.Text = "...";
       this.buttonTargetDirectory.UseVisualStyleBackColor = true;
-      this.buttonTargetDirectory.Click += new System.EventHandler(this.buttonTargetDirectory_Click);
+      this.buttonTargetDirectory.Click += new System.EventHandler(this.ButtonTargetDirectoryClick);
       // 
       // labelTextAfter
       // 
@@ -457,7 +457,7 @@
       this.buttonPickSourceFile.TabIndex = 14;
       this.buttonPickSourceFile.Text = "...";
       this.buttonPickSourceFile.UseVisualStyleBackColor = true;
-      this.buttonPickSourceFile.Click += new System.EventHandler(this.buttonPickSourceFile_Click);
+      this.buttonPickSourceFile.Click += new System.EventHandler(this.ButtonPickSourceFileClick);
       // 
       // comboBoxCodeLanguage
       // 
@@ -490,7 +490,7 @@
       this.checkBoxRemoveStartingSpaces.TabIndex = 28;
       this.checkBoxRemoveStartingSpaces.Text = "Remove starting white spaces";
       this.checkBoxRemoveStartingSpaces.UseVisualStyleBackColor = true;
-      this.checkBoxRemoveStartingSpaces.CheckedChanged += new System.EventHandler(this.checkBoxRemoveStartingSpaces_CheckedChanged);
+      this.checkBoxRemoveStartingSpaces.CheckedChanged += new System.EventHandler(this.CheckBoxRemoveStartingSpacesCheckedChanged);
       // 
       // checkBoxPlaceAfterSpaces
       // 
@@ -503,7 +503,7 @@
       this.checkBoxPlaceAfterSpaces.TabIndex = 29;
       this.checkBoxPlaceAfterSpaces.Text = "Place start string after white space or tabulation";
       this.checkBoxPlaceAfterSpaces.UseVisualStyleBackColor = true;
-      this.checkBoxPlaceAfterSpaces.CheckedChanged += new System.EventHandler(this.checkBoxPlaceAfterSpaces_CheckedChanged);
+      this.checkBoxPlaceAfterSpaces.CheckedChanged += new System.EventHandler(this.CheckBoxPlaceAfterSpacesCheckedChanged);
       // 
       // checkBoxRemoveEndingSpaces
       // 
@@ -516,7 +516,7 @@
       this.checkBoxRemoveEndingSpaces.TabIndex = 30;
       this.checkBoxRemoveEndingSpaces.Text = "Remove ending white spaces";
       this.checkBoxRemoveEndingSpaces.UseVisualStyleBackColor = true;
-      this.checkBoxRemoveEndingSpaces.CheckedChanged += new System.EventHandler(this.checkBoxRemoveEndingSpaces_CheckedChanged);
+      this.checkBoxRemoveEndingSpaces.CheckedChanged += new System.EventHandler(this.CheckBoxRemoveEndingSpacesCheckedChanged);
       // 
       // FormMain
       // 
@@ -546,7 +546,7 @@
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
-      this.Load += new System.EventHandler(this.FormMain_Load);
+      this.Load += new System.EventHandler(this.FormMainLoad);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.ResumeLayout(false);
