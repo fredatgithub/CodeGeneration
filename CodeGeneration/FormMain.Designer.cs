@@ -341,7 +341,7 @@
       // 
       this.buttonGenerateFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonGenerateFile.Location = new System.Drawing.Point(92, 332);
-      this.buttonGenerateFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonGenerateFile.Margin = new System.Windows.Forms.Padding(2);
       this.buttonGenerateFile.Name = "buttonGenerateFile";
       this.buttonGenerateFile.Size = new System.Drawing.Size(117, 27);
       this.buttonGenerateFile.TabIndex = 25;
@@ -353,7 +353,7 @@
       // 
       this.checkBoxTargetFile.AutoSize = true;
       this.checkBoxTargetFile.Location = new System.Drawing.Point(92, 95);
-      this.checkBoxTargetFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.checkBoxTargetFile.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxTargetFile.Name = "checkBoxTargetFile";
       this.checkBoxTargetFile.Size = new System.Drawing.Size(259, 17);
       this.checkBoxTargetFile.TabIndex = 24;
@@ -375,7 +375,7 @@
       // textBoxTargetFile
       // 
       this.textBoxTargetFile.Location = new System.Drawing.Point(92, 126);
-      this.textBoxTargetFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBoxTargetFile.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxTargetFile.Name = "textBoxTargetFile";
       this.textBoxTargetFile.Size = new System.Drawing.Size(546, 20);
       this.textBoxTargetFile.TabIndex = 22;
@@ -383,7 +383,7 @@
       // buttonTargetDirectory
       // 
       this.buttonTargetDirectory.Location = new System.Drawing.Point(642, 127);
-      this.buttonTargetDirectory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonTargetDirectory.Margin = new System.Windows.Forms.Padding(2);
       this.buttonTargetDirectory.Name = "buttonTargetDirectory";
       this.buttonTargetDirectory.Size = new System.Drawing.Size(25, 19);
       this.buttonTargetDirectory.TabIndex = 21;
@@ -405,7 +405,7 @@
       // textBoxTextAfter
       // 
       this.textBoxTextAfter.Location = new System.Drawing.Point(92, 222);
-      this.textBoxTextAfter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBoxTextAfter.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxTextAfter.Name = "textBoxTextAfter";
       this.textBoxTextAfter.Size = new System.Drawing.Size(546, 20);
       this.textBoxTextAfter.TabIndex = 19;
@@ -424,7 +424,7 @@
       // textBoxTextBefore
       // 
       this.textBoxTextBefore.Location = new System.Drawing.Point(92, 172);
-      this.textBoxTextBefore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBoxTextBefore.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxTextBefore.Name = "textBoxTextBefore";
       this.textBoxTextBefore.Size = new System.Drawing.Size(546, 20);
       this.textBoxTextBefore.TabIndex = 17;
@@ -443,7 +443,7 @@
       // textBoxSourceFile
       // 
       this.textBoxSourceFile.Location = new System.Drawing.Point(92, 60);
-      this.textBoxSourceFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.textBoxSourceFile.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxSourceFile.Name = "textBoxSourceFile";
       this.textBoxSourceFile.Size = new System.Drawing.Size(546, 20);
       this.textBoxSourceFile.TabIndex = 15;
@@ -451,7 +451,7 @@
       // buttonPickSourceFile
       // 
       this.buttonPickSourceFile.Location = new System.Drawing.Point(642, 60);
-      this.buttonPickSourceFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.buttonPickSourceFile.Margin = new System.Windows.Forms.Padding(2);
       this.buttonPickSourceFile.Name = "buttonPickSourceFile";
       this.buttonPickSourceFile.Size = new System.Drawing.Size(25, 19);
       this.buttonPickSourceFile.TabIndex = 14;
@@ -462,8 +462,8 @@
       // comboBoxCodeLanguage
       // 
       this.comboBoxCodeLanguage.FormattingEnabled = true;
-      this.comboBoxCodeLanguage.Location = new System.Drawing.Point(418, 95);
-      this.comboBoxCodeLanguage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.comboBoxCodeLanguage.Location = new System.Drawing.Point(433, 95);
+      this.comboBoxCodeLanguage.Margin = new System.Windows.Forms.Padding(2);
       this.comboBoxCodeLanguage.Name = "comboBoxCodeLanguage";
       this.comboBoxCodeLanguage.Size = new System.Drawing.Size(92, 21);
       this.comboBoxCodeLanguage.TabIndex = 26;
@@ -542,7 +542,7 @@
       this.Controls.Add(this.buttonPickSourceFile);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);

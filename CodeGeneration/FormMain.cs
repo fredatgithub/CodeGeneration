@@ -38,10 +38,10 @@ namespace CodeGeneration
 
     readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
-    Dictionary<string, string> codeLanguageextension = new Dictionary<string, string>();
-    private bool trimStartCode = false;
-    private bool trimEndCode = false;
-    private bool placeAfterSpaces = false;
+    readonly Dictionary<string, string> codeLanguageExtension = new Dictionary<string, string>();
+    private bool trimStartCode;
+    private bool trimEndCode;
+    private bool placeAfterSpaces;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -72,9 +72,9 @@ namespace CodeGeneration
       comboBoxCodeLanguage.Items.Add("C++");
       comboBoxCodeLanguage.Items.Add("Visual Basic");
       comboBoxCodeLanguage.SelectedIndex = 0;
-      codeLanguageextension.Add("C#", ".cs");
-      codeLanguageextension.Add("C++", ".cpp");
-      codeLanguageextension.Add("Visual Basic", ".vb");
+      codeLanguageExtension.Add("C#", ".cs");
+      codeLanguageExtension.Add("C++", ".cpp");
+      codeLanguageExtension.Add("Visual Basic", ".vb");
 
     }
 
@@ -417,8 +417,21 @@ namespace CodeGeneration
       {
         sourceFile.Add(sr.ReadLine());
       }
-
+      
       sr.Close();
+      // processing the source file
+      for (int i = 0; i < sourceFile.Count; i++)
+      {
+        if (trimStartCode)
+        {
+          sourceFile[i] = sourceFile[i].TrimStart();
+        }
+
+        if (trimEndCode)
+        {
+          sourceFile[i] = sourceFile[i].TrimEnd();
+        }
+      }
       // writing the file
       string savedFile = Path.Combine(textBoxTargetFile.Text,
         Path.GetFileNameWithoutExtension(textBoxSourceFile.Text) + "2." +
