@@ -38,6 +38,7 @@ namespace CodeGeneration
 
     readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
+    Dictionary<string, string> codeLanguageextension = new Dictionary<string, string>();
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -64,6 +65,14 @@ namespace CodeGeneration
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      comboBoxCodeLanguage.Items.Add("C#");
+      comboBoxCodeLanguage.Items.Add("C++");
+      comboBoxCodeLanguage.Items.Add("Visual Basic");
+      comboBoxCodeLanguage.SelectedIndex = 0;
+      codeLanguageextension.Add("C#", ".cs");
+      codeLanguageextension.Add("C++", ".cpp");
+      codeLanguageextension.Add("Visual Basic", ".vb");
+
     }
 
     private void LoadLanguages()
@@ -342,6 +351,22 @@ namespace CodeGeneration
           break;
 
       }
+    }
+
+    private void buttonPickSourceFile_Click(object sender, EventArgs e)
+    {
+      OpenFileDialog ofd = new OpenFileDialog();
+    }
+
+    private void buttonTargetDirectory_Click(object sender, EventArgs e)
+    {
+      // choose a directory
+    }
+
+    private void buttonGenerateFile_Click(object sender, EventArgs e)
+    {
+      // verify prerequisite and generate the target file
+
     }
   }
 }
