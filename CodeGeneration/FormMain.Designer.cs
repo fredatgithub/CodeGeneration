@@ -490,6 +490,7 @@
       this.checkBoxRemoveStartingSpaces.TabIndex = 28;
       this.checkBoxRemoveStartingSpaces.Text = "Remove starting white spaces";
       this.checkBoxRemoveStartingSpaces.UseVisualStyleBackColor = true;
+      this.checkBoxRemoveStartingSpaces.CheckedChanged += new System.EventHandler(this.checkBoxRemoveStartingSpaces_CheckedChanged);
       // 
       // checkBoxPlaceAfterSpaces
       // 
@@ -502,6 +503,7 @@
       this.checkBoxPlaceAfterSpaces.TabIndex = 29;
       this.checkBoxPlaceAfterSpaces.Text = "Place start string after white space or tabulation";
       this.checkBoxPlaceAfterSpaces.UseVisualStyleBackColor = true;
+      this.checkBoxPlaceAfterSpaces.CheckedChanged += new System.EventHandler(this.checkBoxPlaceAfterSpaces_CheckedChanged);
       // 
       // checkBoxRemoveEndingSpaces
       // 
@@ -514,6 +516,7 @@
       this.checkBoxRemoveEndingSpaces.TabIndex = 30;
       this.checkBoxRemoveEndingSpaces.Text = "Remove ending white spaces";
       this.checkBoxRemoveEndingSpaces.UseVisualStyleBackColor = true;
+      this.checkBoxRemoveEndingSpaces.CheckedChanged += new System.EventHandler(this.checkBoxRemoveEndingSpaces_CheckedChanged);
       // 
       // FormMain
       // 

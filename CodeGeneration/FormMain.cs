@@ -39,6 +39,9 @@ namespace CodeGeneration
     readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
     Dictionary<string, string> codeLanguageextension = new Dictionary<string, string>();
+    private bool trimStartCode = false;
+    private bool trimEndCode = false;
+    private bool placeAfterSpaces = false;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -429,7 +432,7 @@ namespace CodeGeneration
 
       sw.Close();
       var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?", "Code File created", MessageBoxButtons.YesNo);
-      if (DialogResult == DialogResult.Yes)
+      if (result == DialogResult.Yes)
       {
         Process.Start(savedFile); // TODO debug open the file with notepad.exe
       }
@@ -461,7 +464,7 @@ namespace CodeGeneration
       }
     }
 
-    private string RemoveFileNameFromDirectory(string filePath)
+    private static string RemoveFileNameFromDirectory(string filePath)
     {
       return Path.GetDirectoryName(filePath);
     }
@@ -474,7 +477,7 @@ namespace CodeGeneration
 
     private void DisplayMsg(string message, string title, MessageBoxButtons buttons)
     {
-      DialogResult result = MessageBox.Show(this, message, title, buttons);
+      MessageBox.Show(this, message, title, buttons);
     }
 
     private static string[] GetDirectoryFileNameAndExtension(string filePath)
@@ -484,6 +487,21 @@ namespace CodeGeneration
       string extension = Path.GetExtension(filePath);
 
       return new[] { directory, fileName, extension };
+    }
+
+    private void checkBoxRemoveStartingSpaces_CheckedChanged(object sender, EventArgs e)
+    {
+      trimStartCode = checkBoxRemoveStartingSpaces.Checked;
+    }
+
+    private void checkBoxRemoveEndingSpaces_CheckedChanged(object sender, EventArgs e)
+    {
+      trimEndCode = checkBoxRemoveEndingSpaces.Checked;
+    }
+
+    private void checkBoxPlaceAfterSpaces_CheckedChanged(object sender, EventArgs e)
+    {
+      placeAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
     }
   }
 }
