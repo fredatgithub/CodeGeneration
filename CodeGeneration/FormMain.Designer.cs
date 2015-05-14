@@ -538,6 +538,7 @@
       this.checkBoxLaunchNotepad.Text = "Open target file with Notepad.exe otherwise let the standard application open the" +
     " target file";
       this.checkBoxLaunchNotepad.UseVisualStyleBackColor = true;
+      this.checkBoxLaunchNotepad.CheckedChanged += new System.EventHandler(this.checkBoxLaunchNotepad_CheckedChanged);
       // 
       // FormMain
       // 

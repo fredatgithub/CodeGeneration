@@ -118,5 +118,113 @@ namespace CodeGeneration.Properties {
                 this["TargetfileName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxTargetLanguage {
+            get {
+                return ((bool)(this["checkBoxTargetLanguage"]));
+            }
+            set {
+                this["checkBoxTargetLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxRemoveEndingSpaces {
+            get {
+                return ((bool)(this["checkBoxRemoveEndingSpaces"]));
+            }
+            set {
+                this["checkBoxRemoveEndingSpaces"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxRemoveStartingSpaces {
+            get {
+                return ((bool)(this["checkBoxRemoveStartingSpaces"]));
+            }
+            set {
+                this["checkBoxRemoveStartingSpaces"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxPlaceAfterSpaces {
+            get {
+                return ((bool)(this["checkBoxPlaceAfterSpaces"]));
+            }
+            set {
+                this["checkBoxPlaceAfterSpaces"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxLaunchNotepad {
+            get {
+                return ((bool)(this["checkBoxLaunchNotepad"]));
+            }
+            set {
+                this["checkBoxLaunchNotepad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool checkBoxTargetFile {
+            get {
+                return ((bool)(this["checkBoxTargetFile"]));
+            }
+            set {
+                this["checkBoxTargetFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxTextBefore {
+            get {
+                return ((string)(this["textBoxTextBefore"]));
+            }
+            set {
+                this["textBoxTextBefore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxTextAfter {
+            get {
+                return ((string)(this["textBoxTextAfter"]));
+            }
+            set {
+                this["textBoxTextAfter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string comboBoxCodeLanguage {
+            get {
+                return ((string)(this["comboBoxCodeLanguage"]));
+            }
+            set {
+                this["comboBoxCodeLanguage"] = value;
+            }
+        }
     }
 }

@@ -43,10 +43,11 @@ namespace CodeGeneration
     private bool trimEndCode;
     private bool placeAfterSpaces;
     private bool targetLanguage;
+    private bool launchNotepad;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
-      SaveWindowValue();
+      SaveSettingsBeforeExiting();
       Application.Exit();
     }
 
@@ -69,7 +70,7 @@ namespace CodeGeneration
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
-      LoadCheckboxesAtStartup();
+      LoadSettingsAtStartup();
       SetCheckBoxesAtStartup();
       comboBoxCodeLanguage.Items.Add("C#");
       comboBoxCodeLanguage.Items.Add("C++");
@@ -82,9 +83,39 @@ namespace CodeGeneration
       codeLanguageExtension.Add("Text", ".txt");
     }
 
-    private void LoadCheckboxesAtStartup()
+    private void LoadSettingsAtStartup()
     {
-      // TODO
+      textBoxSourceFile.Text = Settings.Default.SourceFileName;
+      textBoxTargetFile.Text = Settings.Default.TargetfileName;
+      checkBoxTargetFile.Checked = Settings.Default.checkBoxTargetFile;
+      checkBoxTargetLanguage.Checked = Settings.Default.checkBoxTargetLanguage;
+      checkBoxLaunchNotepad.Checked = Settings.Default.checkBoxLaunchNotepad;
+      textBoxTextBefore.Text = Settings.Default.textBoxTextBefore;
+      textBoxTextAfter.Text = Settings.Default.textBoxTextAfter;
+      checkBoxRemoveStartingSpaces.Checked = Settings.Default.checkBoxRemoveStartingSpaces;
+      checkBoxRemoveEndingSpaces.Checked = Settings.Default.checkBoxRemoveEndingSpaces;
+      checkBoxPlaceAfterSpaces.Checked = Settings.Default.checkBoxPlaceAfterSpaces;
+    }
+
+    private void SaveSettingsBeforeExiting()
+    {
+      Settings.Default.SourceFileName = textBoxSourceFile.Text;
+      Settings.Default.TargetfileName = textBoxTargetFile.Text;
+      Settings.Default.checkBoxTargetFile = checkBoxTargetFile.Checked;
+      Settings.Default.checkBoxTargetLanguage = checkBoxTargetLanguage.Checked;
+      Settings.Default.checkBoxLaunchNotepad = checkBoxLaunchNotepad.Checked;
+      Settings.Default.textBoxTextBefore = textBoxTextBefore.Text;
+      Settings.Default.textBoxTextAfter = textBoxTextAfter.Text;
+      Settings.Default.checkBoxRemoveStartingSpaces = checkBoxRemoveStartingSpaces.Checked;
+      Settings.Default.checkBoxRemoveEndingSpaces = checkBoxRemoveEndingSpaces.Checked;
+      Settings.Default.checkBoxPlaceAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
+      Settings.Default.SourceFileName = textBoxSourceFile.Text;
+      Settings.Default.TargetfileName = textBoxTargetFile.Text;
+      Settings.Default.WindowHeight = Height;
+      Settings.Default.WindowWidth = Width;
+      Settings.Default.WindowLeft = Left;
+      Settings.Default.WindowTop = Top;
+      Settings.Default.Save();
     }
 
     private void SetCheckBoxesAtStartup()
@@ -104,6 +135,9 @@ namespace CodeGeneration
             break;
           case "checkBoxPlaceAfterSpaces":
             placeAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
+            break;
+          case "checkBoxLaunchNotepad":
+            launchNotepad = checkBoxLaunchNotepad.Checked;
             break;
         }
       }
@@ -126,6 +160,7 @@ namespace CodeGeneration
                      englishValue = node.Element("englishValue").Value,
                      frenchValue = node.Element("frenchValue").Value
                    };
+
       foreach (var i in result)
       {
         languageDicoEn.Add(i.name, i.englishValue);
@@ -293,20 +328,9 @@ namespace CodeGeneration
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
     }
 
-    private void SaveWindowValue()
-    {
-      Settings.Default.WindowHeight = Height;
-      Settings.Default.WindowWidth = Width;
-      Settings.Default.WindowLeft = Left;
-      Settings.Default.WindowTop = Top;
-      Settings.Default.SourceFileName = textBoxSourceFile.Text;
-      Settings.Default.TargetfileName = textBoxTargetFile.Text;
-      Settings.Default.Save();
-    }
-
     private void FormMainFormClosing(object sender, FormClosingEventArgs e)
     {
-      SaveWindowValue();
+      SaveSettingsBeforeExiting();
     }
 
     private void FrenchToolStripMenuItemClick(object sender, EventArgs e)
@@ -482,7 +506,14 @@ namespace CodeGeneration
         "Code File created", MessageBoxButtons.YesNo);
       if (result == DialogResult.Yes)
       {
-        Process.Start("notepad.exe"); // TODO debug open the file with notepad.exe // savedFile
+        if (launchNotepad)
+        {
+          Process.Start("notepad.exe"); // TODO debug open the file with notepad.exe // 
+        }
+        else
+        {
+          Process.Start(savedFile);
+        }
       }
     }
 
@@ -555,6 +586,11 @@ namespace CodeGeneration
     private void checkBoxTargetLanguage_CheckedChanged(object sender, EventArgs e)
     {
       targetLanguage = checkBoxTargetLanguage.Checked;
+    }
+
+    private void checkBoxLaunchNotepad_CheckedChanged(object sender, EventArgs e)
+    {
+      launchNotepad = checkBoxLaunchNotepad.Checked;
     }
   }
 }
