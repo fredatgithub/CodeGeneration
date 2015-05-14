@@ -76,7 +76,6 @@ namespace CodeGeneration
       comboBoxCodeLanguage.Items.Add("C++");
       comboBoxCodeLanguage.Items.Add("Visual Basic");
       comboBoxCodeLanguage.Items.Add("Text");
-      comboBoxCodeLanguage.SelectedIndex = 0;
       codeLanguageExtension.Add("C#", ".cs");
       codeLanguageExtension.Add("C++", ".cpp");
       codeLanguageExtension.Add("Visual Basic", ".vb");
@@ -95,7 +94,31 @@ namespace CodeGeneration
       checkBoxRemoveStartingSpaces.Checked = Settings.Default.checkBoxRemoveStartingSpaces;
       checkBoxRemoveEndingSpaces.Checked = Settings.Default.checkBoxRemoveEndingSpaces;
       checkBoxPlaceAfterSpaces.Checked = Settings.Default.checkBoxPlaceAfterSpaces;
-      comboBoxCodeLanguage.SelectedItem = Settings.Default.comboBoxCodeLanguage;
+      if (Settings.Default.comboBoxCodeLanguage == string.Empty)
+      {
+        comboBoxCodeLanguage.SelectedIndex = 0;
+      }
+      else
+      {
+        comboBoxCodeLanguage.SelectedItem = GetLanguage(Settings.Default.comboBoxCodeLanguage); 
+      }
+    }
+
+    private string GetLanguage(string language)
+    {
+      string result = string.Empty;
+      // foreach (var item in codeLanguageExtension.Where(item => item.Key == language))
+      foreach (var item in codeLanguageExtension) //.Where(item => item.Key == language))
+      {
+        if (item.Key == language) // debug
+        {
+          result = item.Value;
+          break;  
+        }
+        
+      }
+
+      return result;
     }
 
     private void SaveSettingsBeforeExiting()
@@ -112,11 +135,16 @@ namespace CodeGeneration
       Settings.Default.checkBoxPlaceAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
       Settings.Default.SourceFileName = textBoxSourceFile.Text;
       Settings.Default.TargetfileName = textBoxTargetFile.Text;
-      Settings.Default.comboBoxCodeLanguage = comboBoxCodeLanguage.SelectedItem.ToString();
       Settings.Default.WindowHeight = Height;
       Settings.Default.WindowWidth = Width;
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
+      if (comboBoxCodeLanguage.SelectedIndex == -1)
+      {
+        comboBoxCodeLanguage.SelectedIndex = 0;
+      }
+
+      Settings.Default.comboBoxCodeLanguage = comboBoxCodeLanguage.SelectedItem.ToString();
       Settings.Default.Save();
     }
 
@@ -378,8 +406,8 @@ namespace CodeGeneration
           indexToolStripMenuItem.Text = languageDicoEn["MenuHelpIndex"];
           searchToolStripMenuItem.Text = languageDicoEn["MenuHelpSearch"];
           aboutToolStripMenuItem.Text = languageDicoEn["MenuHelpAbout"];
-
           break;
+
         case "French":
           frenchToolStripMenuItem.Checked = true;
           englishToolStripMenuItem.Checked = false;
@@ -409,7 +437,6 @@ namespace CodeGeneration
           indexToolStripMenuItem.Text = languageDicoFr["MenuHelpIndex"];
           searchToolStripMenuItem.Text = languageDicoFr["MenuHelpSearch"];
           aboutToolStripMenuItem.Text = languageDicoFr["MenuHelpAbout"];
-
           break;
 
       }
