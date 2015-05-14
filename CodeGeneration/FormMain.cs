@@ -42,6 +42,7 @@ namespace CodeGeneration
     private bool trimStartCode;
     private bool trimEndCode;
     private bool placeAfterSpaces;
+    private bool targetLanguage;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -68,6 +69,7 @@ namespace CodeGeneration
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      SetCheckBoxesAtStartup();
       comboBoxCodeLanguage.Items.Add("C#");
       comboBoxCodeLanguage.Items.Add("C++");
       comboBoxCodeLanguage.Items.Add("Visual Basic");
@@ -75,7 +77,28 @@ namespace CodeGeneration
       codeLanguageExtension.Add("C#", ".cs");
       codeLanguageExtension.Add("C++", ".cpp");
       codeLanguageExtension.Add("Visual Basic", ".vb");
+    }
 
+    private void SetCheckBoxesAtStartup()
+    {
+      foreach (CheckBox control in Controls.OfType<CheckBox>())
+      {
+        switch (control.Name)
+        {
+          case "checkBoxTargetLanguage":
+            targetLanguage = checkBoxTargetLanguage.Checked;
+            break;
+          case "checkBoxRemoveEndingSpaces":
+            trimEndCode = checkBoxRemoveEndingSpaces.Checked;
+            break;
+          case "checkBoxRemoveStartingSpaces":
+            trimStartCode = checkBoxRemoveStartingSpaces.Checked;
+            break;
+          case "checkBoxPlaceAfterSpaces":
+            placeAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
+            break;
+        }
+      }
     }
 
     private void LoadLanguages()
@@ -433,9 +456,10 @@ namespace CodeGeneration
         }
       }
       // writing the file
+      string extension = targetLanguage ? Path.GetExtension(textBoxSourceFile.Text) :
+        codeLanguageExtension[comboBoxCodeLanguage.SelectedItem.ToString()];
       string savedFile = Path.Combine(textBoxTargetFile.Text,
-        Path.GetFileNameWithoutExtension(textBoxSourceFile.Text) + "2." +
-        Path.GetExtension(textBoxSourceFile.Text));
+        Path.GetFileNameWithoutExtension(textBoxSourceFile.Text) + "2." + extension);
       StreamWriter sw = new StreamWriter(savedFile);
       foreach (string line in sourceFile)
       {
@@ -444,7 +468,8 @@ namespace CodeGeneration
       }
 
       sw.Close();
-      var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?", "Code File created", MessageBoxButtons.YesNo);
+      var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?", 
+        "Code File created", MessageBoxButtons.YesNo);
       if (result == DialogResult.Yes)
       {
         Process.Start(savedFile); // TODO debug open the file with notepad.exe
@@ -515,6 +540,11 @@ namespace CodeGeneration
     private void checkBoxPlaceAfterSpaces_CheckedChanged(object sender, EventArgs e)
     {
       placeAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
+    }
+
+    private void checkBoxTargetLanguage_CheckedChanged(object sender, EventArgs e)
+    {
+      targetLanguage = checkBoxTargetLanguage.Checked;
     }
   }
 }
