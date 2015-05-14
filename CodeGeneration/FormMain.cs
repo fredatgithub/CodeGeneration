@@ -95,6 +95,7 @@ namespace CodeGeneration
       checkBoxRemoveStartingSpaces.Checked = Settings.Default.checkBoxRemoveStartingSpaces;
       checkBoxRemoveEndingSpaces.Checked = Settings.Default.checkBoxRemoveEndingSpaces;
       checkBoxPlaceAfterSpaces.Checked = Settings.Default.checkBoxPlaceAfterSpaces;
+      comboBoxCodeLanguage.SelectedItem = Settings.Default.comboBoxCodeLanguage;
     }
 
     private void SaveSettingsBeforeExiting()
@@ -111,6 +112,7 @@ namespace CodeGeneration
       Settings.Default.checkBoxPlaceAfterSpaces = checkBoxPlaceAfterSpaces.Checked;
       Settings.Default.SourceFileName = textBoxSourceFile.Text;
       Settings.Default.TargetfileName = textBoxTargetFile.Text;
+      Settings.Default.comboBoxCodeLanguage = comboBoxCodeLanguage.SelectedItem.ToString();
       Settings.Default.WindowHeight = Height;
       Settings.Default.WindowWidth = Width;
       Settings.Default.WindowLeft = Left;
@@ -416,7 +418,7 @@ namespace CodeGeneration
     private void ButtonPickSourceFileClick(object sender, EventArgs e)
     {
       var opendialog = new OpenFileDialog
-      { Filter = @"Code files(*.cs; *.cpp; *.vb)| *.cs; *.cpp; *.vb" };
+      { Filter = @"Code files(*.cs; *.cpp; *.vb *.txt)| *.cs; *.cpp; *.vb; *.txt" };
       if (opendialog.ShowDialog() == DialogResult.OK)
       {
         textBoxSourceFile.Text = opendialog.FileName;
