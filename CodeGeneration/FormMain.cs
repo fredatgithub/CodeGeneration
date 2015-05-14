@@ -74,10 +74,12 @@ namespace CodeGeneration
       comboBoxCodeLanguage.Items.Add("C#");
       comboBoxCodeLanguage.Items.Add("C++");
       comboBoxCodeLanguage.Items.Add("Visual Basic");
+      comboBoxCodeLanguage.Items.Add("Text");
       comboBoxCodeLanguage.SelectedIndex = 0;
       codeLanguageExtension.Add("C#", ".cs");
       codeLanguageExtension.Add("C++", ".cpp");
       codeLanguageExtension.Add("Visual Basic", ".vb");
+      codeLanguageExtension.Add("Text", ".txt");
     }
 
     private void LoadCheckboxesAtStartup()
