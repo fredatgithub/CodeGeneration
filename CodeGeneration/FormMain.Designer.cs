@@ -533,9 +533,10 @@
       this.checkBoxLaunchNotepad.Location = new System.Drawing.Point(92, 184);
       this.checkBoxLaunchNotepad.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxLaunchNotepad.Name = "checkBoxLaunchNotepad";
-      this.checkBoxLaunchNotepad.Size = new System.Drawing.Size(217, 17);
+      this.checkBoxLaunchNotepad.Size = new System.Drawing.Size(546, 17);
       this.checkBoxLaunchNotepad.TabIndex = 32;
-      this.checkBoxLaunchNotepad.Text = "Open target file with Notepad.exe";
+      this.checkBoxLaunchNotepad.Text = "Open target file with Notepad.exe otherwise let the standard application open the" +
+    " target file";
       this.checkBoxLaunchNotepad.UseVisualStyleBackColor = true;
       // 
       // FormMain
