@@ -69,6 +69,7 @@ namespace CodeGeneration
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      LoadCheckboxesAtStartup();
       SetCheckBoxesAtStartup();
       comboBoxCodeLanguage.Items.Add("C#");
       comboBoxCodeLanguage.Items.Add("C++");
@@ -77,6 +78,11 @@ namespace CodeGeneration
       codeLanguageExtension.Add("C#", ".cs");
       codeLanguageExtension.Add("C++", ".cpp");
       codeLanguageExtension.Add("Visual Basic", ".vb");
+    }
+
+    private void LoadCheckboxesAtStartup()
+    {
+      // TODO
     }
 
     private void SetCheckBoxesAtStartup()
@@ -291,6 +297,8 @@ namespace CodeGeneration
       Settings.Default.WindowWidth = Width;
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
+      Settings.Default.SourceFileName = textBoxSourceFile.Text;
+      Settings.Default.TargetfileName = textBoxTargetFile.Text;
       Settings.Default.Save();
     }
 
@@ -472,7 +480,7 @@ namespace CodeGeneration
         "Code File created", MessageBoxButtons.YesNo);
       if (result == DialogResult.Yes)
       {
-        Process.Start(savedFile); // TODO debug open the file with notepad.exe
+        Process.Start("notepad.exe"); // TODO debug open the file with notepad.exe // savedFile
       }
     }
 

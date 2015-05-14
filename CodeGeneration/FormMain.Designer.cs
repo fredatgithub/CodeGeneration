@@ -79,6 +79,7 @@
       this.checkBoxPlaceAfterSpaces = new System.Windows.Forms.CheckBox();
       this.checkBoxRemoveEndingSpaces = new System.Windows.Forms.CheckBox();
       this.checkBoxTargetLanguage = new System.Windows.Forms.CheckBox();
+      this.checkBoxLaunchNotepad = new System.Windows.Forms.CheckBox();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -340,7 +341,7 @@
       // buttonGenerateFile
       // 
       this.buttonGenerateFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonGenerateFile.Location = new System.Drawing.Point(92, 359);
+      this.buttonGenerateFile.Location = new System.Drawing.Point(92, 374);
       this.buttonGenerateFile.Margin = new System.Windows.Forms.Padding(2);
       this.buttonGenerateFile.Name = "buttonGenerateFile";
       this.buttonGenerateFile.Size = new System.Drawing.Size(117, 27);
@@ -356,9 +357,9 @@
       this.checkBoxTargetFile.Location = new System.Drawing.Point(92, 95);
       this.checkBoxTargetFile.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxTargetFile.Name = "checkBoxTargetFile";
-      this.checkBoxTargetFile.Size = new System.Drawing.Size(312, 17);
+      this.checkBoxTargetFile.Size = new System.Drawing.Size(308, 17);
       this.checkBoxTargetFile.TabIndex = 24;
-      this.checkBoxTargetFile.Text = "Target file in the same directory as the source file.";
+      this.checkBoxTargetFile.Text = "Target file in the same directory as the source file";
       this.checkBoxTargetFile.UseVisualStyleBackColor = true;
       this.checkBoxTargetFile.CheckedChanged += new System.EventHandler(this.CheckBoxTargetFileCheckedChanged);
       // 
@@ -396,7 +397,7 @@
       // 
       this.labelTextAfter.AutoSize = true;
       this.labelTextAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTextAfter.Location = new System.Drawing.Point(16, 253);
+      this.labelTextAfter.Location = new System.Drawing.Point(16, 268);
       this.labelTextAfter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTextAfter.Name = "labelTextAfter";
       this.labelTextAfter.Size = new System.Drawing.Size(66, 13);
@@ -405,7 +406,7 @@
       // 
       // textBoxTextAfter
       // 
-      this.textBoxTextAfter.Location = new System.Drawing.Point(92, 249);
+      this.textBoxTextAfter.Location = new System.Drawing.Point(92, 264);
       this.textBoxTextAfter.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxTextAfter.Name = "textBoxTextAfter";
       this.textBoxTextAfter.Size = new System.Drawing.Size(546, 20);
@@ -415,7 +416,7 @@
       // 
       this.labelTextBefore.AutoSize = true;
       this.labelTextBefore.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTextBefore.Location = new System.Drawing.Point(16, 203);
+      this.labelTextBefore.Location = new System.Drawing.Point(16, 218);
       this.labelTextBefore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.labelTextBefore.Name = "labelTextBefore";
       this.labelTextBefore.Size = new System.Drawing.Size(76, 13);
@@ -424,7 +425,7 @@
       // 
       // textBoxTextBefore
       // 
-      this.textBoxTextBefore.Location = new System.Drawing.Point(92, 199);
+      this.textBoxTextBefore.Location = new System.Drawing.Point(92, 214);
       this.textBoxTextBefore.Margin = new System.Windows.Forms.Padding(2);
       this.textBoxTextBefore.Name = "textBoxTextBefore";
       this.textBoxTextBefore.Size = new System.Drawing.Size(546, 20);
@@ -473,7 +474,7 @@
       // 
       this.checkBoxRemoveStartingSpaces.AutoSize = true;
       this.checkBoxRemoveStartingSpaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.checkBoxRemoveStartingSpaces.Location = new System.Drawing.Point(92, 282);
+      this.checkBoxRemoveStartingSpaces.Location = new System.Drawing.Point(92, 297);
       this.checkBoxRemoveStartingSpaces.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxRemoveStartingSpaces.Name = "checkBoxRemoveStartingSpaces";
       this.checkBoxRemoveStartingSpaces.Size = new System.Drawing.Size(196, 17);
@@ -486,7 +487,7 @@
       // 
       this.checkBoxPlaceAfterSpaces.AutoSize = true;
       this.checkBoxPlaceAfterSpaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.checkBoxPlaceAfterSpaces.Location = new System.Drawing.Point(92, 315);
+      this.checkBoxPlaceAfterSpaces.Location = new System.Drawing.Point(92, 330);
       this.checkBoxPlaceAfterSpaces.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxPlaceAfterSpaces.Name = "checkBoxPlaceAfterSpaces";
       this.checkBoxPlaceAfterSpaces.Size = new System.Drawing.Size(299, 17);
@@ -499,7 +500,7 @@
       // 
       this.checkBoxRemoveEndingSpaces.AutoSize = true;
       this.checkBoxRemoveEndingSpaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.checkBoxRemoveEndingSpaces.Location = new System.Drawing.Point(379, 282);
+      this.checkBoxRemoveEndingSpaces.Location = new System.Drawing.Point(450, 297);
       this.checkBoxRemoveEndingSpaces.Margin = new System.Windows.Forms.Padding(2);
       this.checkBoxRemoveEndingSpaces.Name = "checkBoxRemoveEndingSpaces";
       this.checkBoxRemoveEndingSpaces.Size = new System.Drawing.Size(192, 17);
@@ -523,11 +524,26 @@
       this.checkBoxTargetLanguage.UseVisualStyleBackColor = true;
       this.checkBoxTargetLanguage.CheckedChanged += new System.EventHandler(this.checkBoxTargetLanguage_CheckedChanged);
       // 
+      // checkBoxLaunchNotepad
+      // 
+      this.checkBoxLaunchNotepad.AutoSize = true;
+      this.checkBoxLaunchNotepad.Checked = true;
+      this.checkBoxLaunchNotepad.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.checkBoxLaunchNotepad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.checkBoxLaunchNotepad.Location = new System.Drawing.Point(92, 184);
+      this.checkBoxLaunchNotepad.Margin = new System.Windows.Forms.Padding(2);
+      this.checkBoxLaunchNotepad.Name = "checkBoxLaunchNotepad";
+      this.checkBoxLaunchNotepad.Size = new System.Drawing.Size(217, 17);
+      this.checkBoxLaunchNotepad.TabIndex = 32;
+      this.checkBoxLaunchNotepad.Text = "Open target file with Notepad.exe";
+      this.checkBoxLaunchNotepad.UseVisualStyleBackColor = true;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(683, 409);
+      this.Controls.Add(this.checkBoxLaunchNotepad);
       this.Controls.Add(this.checkBoxTargetLanguage);
       this.Controls.Add(this.checkBoxRemoveEndingSpaces);
       this.Controls.Add(this.checkBoxPlaceAfterSpaces);
@@ -550,6 +566,7 @@
       this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.ShowIcon = false;
+      this.Text = "Code generation";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMainLoad);
       this.menuStrip1.ResumeLayout(false);
@@ -612,5 +629,6 @@
     private System.Windows.Forms.CheckBox checkBoxPlaceAfterSpaces;
     private System.Windows.Forms.CheckBox checkBoxRemoveEndingSpaces;
     private System.Windows.Forms.CheckBox checkBoxTargetLanguage;
+    private System.Windows.Forms.CheckBox checkBoxLaunchNotepad;
   }
 }

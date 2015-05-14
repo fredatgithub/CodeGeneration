@@ -20,5 +20,11 @@
     <Setting Name="LanguageFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Translations.xml</Value>
     </Setting>
+    <Setting Name="SourceFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TargetfileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
