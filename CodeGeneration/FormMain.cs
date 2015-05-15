@@ -538,6 +538,7 @@ namespace CodeGeneration
       foreach (string line in sourceFile)
       {
         // write after spaces if any TODO
+        
         sw.WriteLine(textBoxTextBefore.Text + line + textBoxTextAfter.Text);
       }
 
@@ -548,7 +549,7 @@ namespace CodeGeneration
       {
         if (launchNotepad)
         {
-          Process.Start("notepad.exe"); // TODO debug open the file with notepad.exe // 
+          Process.Start("notepad.exe", savedFile);
         }
         else
         {
