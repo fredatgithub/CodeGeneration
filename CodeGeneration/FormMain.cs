@@ -26,6 +26,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using CodeGeneration.Properties;
+using System.Text.RegularExpressions;
 
 namespace CodeGeneration
 {
@@ -537,9 +538,15 @@ namespace CodeGeneration
       StreamWriter sw = new StreamWriter(savedFile);
       foreach (string line in sourceFile)
       {
-        // write after spaces if any TODO
+        if (placeAfterSpaces)
+        {
+          sw.WriteLine(InsertString(line, textBoxTextBefore.Text) + textBoxTextAfter.Text);
+        }
+        else
+        {
+          sw.WriteLine(textBoxTextBefore.Text + line + textBoxTextAfter.Text);
+        }
         
-        sw.WriteLine(textBoxTextBefore.Text + line + textBoxTextAfter.Text);
       }
 
       sw.Close();
@@ -556,6 +563,28 @@ namespace CodeGeneration
           Process.Start(savedFile);
         }
       }
+    }
+
+    private string InsertString(string myString, string stringToBeinserted, char characterToSkip = ' ')
+    {
+      string result = myString;
+      int firstIndexOf = 0;
+      for (int i = 0; i < myString.Length; i++)
+      {
+        if (myString[i] == characterToSkip || myString[i] == '\t')
+        {
+          firstIndexOf++;
+        }
+        else
+        {
+          break;
+        }
+      }
+
+      string blanks = myString.Substring(0, firstIndexOf);
+      string afterBlanks = myString.Substring(firstIndexOf, myString.Length - blanks.Length);
+      result = blanks + stringToBeinserted + afterBlanks;
+      return result;
     }
 
     private void CheckBoxTargetFileCheckedChanged(object sender, EventArgs e)
