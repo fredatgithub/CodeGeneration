@@ -38,7 +38,7 @@ namespace CodeGeneration
 
     readonly Dictionary<string, string> languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
-    readonly Dictionary<string, string> codeLanguageExtension = new Dictionary<string, string>();
+    Dictionary<string, string> codeLanguageExtension = new Dictionary<string, string>();
     private bool trimStartCode;
     private bool trimEndCode;
     private bool placeAfterSpaces;
@@ -70,12 +70,23 @@ namespace CodeGeneration
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      LoadCodeLanguageDictionary();
+      LoadComboBoxLanguage();
       LoadSettingsAtStartup();
       SetCheckBoxesAtStartup();
+    }
+
+    private void LoadComboBoxLanguage()
+    {
+      comboBoxCodeLanguage.Items.Clear();
       comboBoxCodeLanguage.Items.Add("C#");
       comboBoxCodeLanguage.Items.Add("C++");
       comboBoxCodeLanguage.Items.Add("Visual Basic");
       comboBoxCodeLanguage.Items.Add("Text");
+    }
+
+    private void LoadCodeLanguageDictionary()
+    {
       codeLanguageExtension.Add("C#", ".cs");
       codeLanguageExtension.Add("C++", ".cpp");
       codeLanguageExtension.Add("Visual Basic", ".vb");
@@ -100,22 +111,17 @@ namespace CodeGeneration
       }
       else
       {
-        comboBoxCodeLanguage.SelectedItem = GetLanguage(Settings.Default.comboBoxCodeLanguage); 
+        comboBoxCodeLanguage.SelectedItem = GetLanguage(Settings.Default.comboBoxCodeLanguage);
       }
     }
 
     private string GetLanguage(string language)
     {
       string result = string.Empty;
-      // foreach (var item in codeLanguageExtension.Where(item => item.Key == language))
-      foreach (var item in codeLanguageExtension) //.Where(item => item.Key == language))
+      foreach (var item in codeLanguageExtension.Where(item => item.Key == language))
       {
-        if (item.Key == language) // debug
-        {
-          result = item.Value;
-          break;  
-        }
-        
+        result = item.Key;
+        break;
       }
 
       return result;
@@ -141,6 +147,11 @@ namespace CodeGeneration
       Settings.Default.WindowTop = Top;
       if (comboBoxCodeLanguage.SelectedIndex == -1)
       {
+        if (comboBoxCodeLanguage.Items.Count == 0)
+        {
+          comboBoxCodeLanguage.Items.Add("text");
+        }
+
         comboBoxCodeLanguage.SelectedIndex = 0;
       }
 
@@ -503,7 +514,7 @@ namespace CodeGeneration
       {
         sourceFile.Add(sr.ReadLine());
       }
-      
+
       sr.Close();
       // processing the source file
       for (int i = 0; i < sourceFile.Count; i++)
@@ -531,7 +542,7 @@ namespace CodeGeneration
       }
 
       sw.Close();
-      var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?", 
+      var result = DisplayMessage("The file\n" + textBoxSourceFile.Text + "\nhas been created.\ndo you want to open it ?",
         "Code File created", MessageBoxButtons.YesNo);
       if (result == DialogResult.Yes)
       {
