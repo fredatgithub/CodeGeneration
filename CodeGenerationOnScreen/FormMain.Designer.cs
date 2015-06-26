@@ -73,6 +73,7 @@
       this.buttonConvert = new System.Windows.Forms.Button();
       this.checkBoxKeepEmptyLines = new System.Windows.Forms.CheckBox();
       this.checkBoxTrimWhiteSpace = new System.Windows.Forms.CheckBox();
+      this.checkBoxDontDuplicateCharacters = new System.Windows.Forms.CheckBox();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -342,6 +343,7 @@
       this.textBoxSource.Location = new System.Drawing.Point(87, 69);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
+      this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.textBoxSource.Size = new System.Drawing.Size(628, 154);
       this.textBoxSource.TabIndex = 2;
       this.textBoxSource.Text = resources.GetString("textBoxSource.Text");
@@ -354,6 +356,7 @@
       this.textBoxTarget.Location = new System.Drawing.Point(87, 312);
       this.textBoxTarget.Multiline = true;
       this.textBoxTarget.Name = "textBoxTarget";
+      this.textBoxTarget.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.textBoxTarget.Size = new System.Drawing.Size(628, 154);
       this.textBoxTarget.TabIndex = 3;
       // 
@@ -411,7 +414,7 @@
       // 
       // buttonConvert
       // 
-      this.buttonConvert.Location = new System.Drawing.Point(459, 244);
+      this.buttonConvert.Location = new System.Drawing.Point(428, 242);
       this.buttonConvert.Name = "buttonConvert";
       this.buttonConvert.Size = new System.Drawing.Size(75, 23);
       this.buttonConvert.TabIndex = 10;
@@ -439,11 +442,22 @@
       this.checkBoxTrimWhiteSpace.Text = "Trim white space";
       this.checkBoxTrimWhiteSpace.UseVisualStyleBackColor = true;
       // 
+      // checkBoxDontDuplicateCharacters
+      // 
+      this.checkBoxDontDuplicateCharacters.AutoSize = true;
+      this.checkBoxDontDuplicateCharacters.Location = new System.Drawing.Point(428, 280);
+      this.checkBoxDontDuplicateCharacters.Name = "checkBoxDontDuplicateCharacters";
+      this.checkBoxDontDuplicateCharacters.Size = new System.Drawing.Size(250, 17);
+      this.checkBoxDontDuplicateCharacters.TabIndex = 13;
+      this.checkBoxDontDuplicateCharacters.Text = "Do not duplicate starting and ending characters";
+      this.checkBoxDontDuplicateCharacters.UseVisualStyleBackColor = true;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(740, 483);
+      this.Controls.Add(this.checkBoxDontDuplicateCharacters);
       this.Controls.Add(this.checkBoxTrimWhiteSpace);
       this.Controls.Add(this.checkBoxKeepEmptyLines);
       this.Controls.Add(this.buttonConvert);
@@ -516,5 +530,6 @@
     private System.Windows.Forms.Button buttonConvert;
     private System.Windows.Forms.CheckBox checkBoxKeepEmptyLines;
     private System.Windows.Forms.CheckBox checkBoxTrimWhiteSpace;
+    private System.Windows.Forms.CheckBox checkBoxDontDuplicateCharacters;
   }
 }
