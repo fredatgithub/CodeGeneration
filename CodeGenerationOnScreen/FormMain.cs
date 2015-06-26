@@ -469,16 +469,24 @@ namespace CodeGenerationOnScreen
 
     private void buttonConvert_Click(object sender, EventArgs e)
     {
+      textBoxTarget.Text = string.Empty;
       if (textBoxSource.Text == string.Empty)
       {
         DisplayMessageOk("The source text cannot be empty", "Text Empty", MessageBoxButtons.OK);
         return;
       }
 
-      string[] lines = textBoxSource.Text.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+      string[] lines = textBoxSource.Text.Split(new[] { "\n", "\r\n" }, checkBoxKeepEmptyLines.Checked ? StringSplitOptions.None : StringSplitOptions.RemoveEmptyEntries);
       foreach (string line in lines)
       {
-        if (line.Trim() != string.Empty)
+        if (checkBoxTrimWhiteSpace.Checked)
+        {
+          if (line.Trim() != string.Empty)
+          {
+            textBoxTarget.Text += textBoxBeforeLine.Text + line.Trim() + textBoxAfterLine.Text + Environment.NewLine;
+          }
+        }
+        else
         {
           textBoxTarget.Text += textBoxBeforeLine.Text + line + textBoxAfterLine.Text + Environment.NewLine;
         }
