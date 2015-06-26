@@ -20,6 +20,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -464,6 +465,24 @@ namespace CodeGenerationOnScreen
 
       return (from Control childControl in container.Controls
               select FindFocusedControl(childControl)).FirstOrDefault(maybeFocusedControl => maybeFocusedControl != null);
+    }
+
+    private void buttonConvert_Click(object sender, EventArgs e)
+    {
+      if (textBoxSource.Text == string.Empty)
+      {
+        DisplayMessageOk("The source text cannot be empty", "Text Empty", MessageBoxButtons.OK);
+        return;
+      }
+
+      string[] lines = textBoxSource.Text.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+      foreach (string line in lines)
+      {
+        if (line.Trim() != string.Empty)
+        {
+          textBoxTarget.Text += textBoxBeforeLine.Text + line + textBoxAfterLine.Text + Environment.NewLine;
+        }
+      }
     }
   }
 }

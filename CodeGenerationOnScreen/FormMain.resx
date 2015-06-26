@@ -120,4 +120,15 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="textBoxSource.Text" xml:space="preserve">
+    <value>&lt;Quote&gt;
+
+    &lt;Author&gt;Charlie Chaplin&lt;/Author&gt;
+    
+&lt;Language&gt;French&lt;/Language&gt;
+    
+&lt;QuoteValue&gt;L'humour renforce notre instinct de survie et sauvegarde notre santé d'esprit&lt;/QuoteValue&gt;
+  
+&lt;/Quote&gt;</value>
+  </data>
 </root>
