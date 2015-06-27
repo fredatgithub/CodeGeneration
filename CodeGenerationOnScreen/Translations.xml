@@ -154,5 +154,45 @@
       <englishValue>There is nothing to copy</englishValue>
       <frenchValue>Il n'y a rien à copier</frenchValue>
     </term>
+    <term>
+      <name>Beforeline</name>
+      <englishValue>Before line</englishValue>
+      <frenchValue>Avant la ligne</frenchValue>
+    </term>
+    <term>
+      <name>Afterline</name>
+      <englishValue>After line</englishValue>
+      <frenchValue>Après la ligne</frenchValue>
+    </term>
+    <term>
+      <name>Convert</name>
+      <englishValue>Convert</englishValue>
+      <frenchValue>Convertir</frenchValue>
+    </term>
+    <term>
+      <name>Keepemptylines</name>
+      <englishValue>Keep empty lines</englishValue>
+      <frenchValue>Garder lignes vides</frenchValue>
+    </term>
+    <term>
+      <name>Trimwhitespace</name>
+      <englishValue>Trim white space</englishValue>
+      <frenchValue>Effacer espaces extrémités</frenchValue>
+    </term>
+    <term>
+      <name>Donotduplicatestartingandendingcharacters</name>
+      <englishValue>Do not duplicate starting and ending characters</englishValue>
+      <frenchValue>Pas de caractère doublé en extrémité</frenchValue>
+    </term>
+    <term>
+      <name>Targettext</name>
+      <englishValue>Target text</englishValue>
+      <frenchValue>Texte cible</frenchValue>
+    </term>
+    <term>
+      <name>Sourcetext</name>
+      <englishValue>Source text</englishValue>
+      <frenchValue>Texte source</frenchValue>
+    </term>
   </terms>
 </Document>

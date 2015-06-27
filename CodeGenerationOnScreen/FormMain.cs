@@ -20,7 +20,6 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -250,6 +249,9 @@ namespace CodeGenerationOnScreen
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      checkBoxKeepEmptyLines.Checked = Settings.Default.checkBoxKeepEmptyLines;
+      checkBoxTrimWhiteSpace.Checked = Settings.Default.checkBoxTrimWhiteSpace;
+      checkBoxDontDuplicateCharacters.Checked = Settings.Default.checkBoxDontDuplicateCharacters;
     }
 
     private void SaveWindowValue()
@@ -259,6 +261,9 @@ namespace CodeGenerationOnScreen
       Settings.Default.WindowLeft = Left;
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
+      Settings.Default.checkBoxKeepEmptyLines = checkBoxKeepEmptyLines.Checked;
+      Settings.Default.checkBoxTrimWhiteSpace = checkBoxTrimWhiteSpace.Checked;
+      Settings.Default.checkBoxDontDuplicateCharacters = checkBoxDontDuplicateCharacters.Checked;
       Settings.Default.Save();
     }
 
@@ -311,6 +316,15 @@ namespace CodeGenerationOnScreen
           searchToolStripMenuItem.Text = languageDicoEn["MenuHelpSearch"];
           aboutToolStripMenuItem.Text = languageDicoEn["MenuHelpAbout"];
 
+          labelSourceText.Text = languageDicoEn["Sourcetext"];
+          labelBeforeLine.Text = languageDicoEn["Beforeline"];
+          labelAfterLine.Text = languageDicoEn["Afterline"];
+          buttonConvert.Text = languageDicoEn["Convert"];
+          checkBoxKeepEmptyLines.Text = languageDicoEn["Keepemptylines"];
+          checkBoxTrimWhiteSpace.Text = languageDicoEn["Trimwhitespace"];
+          checkBoxDontDuplicateCharacters.Text = languageDicoEn["Donotduplicatestartingandendingcharacters"];
+          labelTargetText.Text = languageDicoEn["Targettext"];
+
           break;
         case "French":
           frenchToolStripMenuItem.Checked = true;
@@ -341,7 +355,14 @@ namespace CodeGenerationOnScreen
           indexToolStripMenuItem.Text = languageDicoFr["MenuHelpIndex"];
           searchToolStripMenuItem.Text = languageDicoFr["MenuHelpSearch"];
           aboutToolStripMenuItem.Text = languageDicoFr["MenuHelpAbout"];
-
+          labelSourceText.Text = languageDicoFr["Sourcetext"];
+          labelBeforeLine.Text = languageDicoFr["Beforeline"];
+          labelAfterLine.Text = languageDicoFr["Afterline"];
+          buttonConvert.Text = languageDicoFr["Convert"];
+          checkBoxKeepEmptyLines.Text = languageDicoFr["Keepemptylines"];
+          checkBoxTrimWhiteSpace.Text = languageDicoFr["Trimwhitespace"];
+          checkBoxDontDuplicateCharacters.Text = languageDicoFr["Donotduplicatestartingandendingcharacters"];
+          labelTargetText.Text = languageDicoFr["Targettext"];
           break;
       }
     }

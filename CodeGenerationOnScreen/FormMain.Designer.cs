@@ -379,7 +379,7 @@
       // labelSourceText
       // 
       this.labelSourceText.AutoSize = true;
-      this.labelSourceText.Location = new System.Drawing.Point(22, 69);
+      this.labelSourceText.Location = new System.Drawing.Point(9, 69);
       this.labelSourceText.Name = "labelSourceText";
       this.labelSourceText.Size = new System.Drawing.Size(61, 13);
       this.labelSourceText.TabIndex = 6;
@@ -388,7 +388,7 @@
       // labelTargetText
       // 
       this.labelTargetText.AutoSize = true;
-      this.labelTargetText.Location = new System.Drawing.Point(22, 315);
+      this.labelTargetText.Location = new System.Drawing.Point(9, 315);
       this.labelTargetText.Name = "labelTargetText";
       this.labelTargetText.Size = new System.Drawing.Size(58, 13);
       this.labelTargetText.TabIndex = 7;
@@ -397,7 +397,7 @@
       // labelBeforeLine
       // 
       this.labelBeforeLine.AutoSize = true;
-      this.labelBeforeLine.Location = new System.Drawing.Point(22, 244);
+      this.labelBeforeLine.Location = new System.Drawing.Point(9, 244);
       this.labelBeforeLine.Name = "labelBeforeLine";
       this.labelBeforeLine.Size = new System.Drawing.Size(57, 13);
       this.labelBeforeLine.TabIndex = 8;
@@ -414,7 +414,7 @@
       // 
       // buttonConvert
       // 
-      this.buttonConvert.Location = new System.Drawing.Point(428, 242);
+      this.buttonConvert.Location = new System.Drawing.Point(457, 242);
       this.buttonConvert.Name = "buttonConvert";
       this.buttonConvert.Size = new System.Drawing.Size(75, 23);
       this.buttonConvert.TabIndex = 10;
@@ -445,7 +445,7 @@
       // checkBoxDontDuplicateCharacters
       // 
       this.checkBoxDontDuplicateCharacters.AutoSize = true;
-      this.checkBoxDontDuplicateCharacters.Location = new System.Drawing.Point(428, 280);
+      this.checkBoxDontDuplicateCharacters.Location = new System.Drawing.Point(457, 280);
       this.checkBoxDontDuplicateCharacters.Name = "checkBoxDontDuplicateCharacters";
       this.checkBoxDontDuplicateCharacters.Size = new System.Drawing.Size(250, 17);
       this.checkBoxDontDuplicateCharacters.TabIndex = 13;
@@ -471,7 +471,7 @@
       this.Controls.Add(this.textBoxSource);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.Text = "Code Generation on-screen display";
