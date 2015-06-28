@@ -78,12 +78,18 @@ namespace CodeGenerationOnScreen
       XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
+                   let xElement1 = node.Element("name")
+                   where xElement1 != null
+                   let xElement2 = node.Element("englishValue")
+                   where xElement2 != null
+                   let xElement3 = node.Element("frenchValue")
+                   where xElement3 != null
                    select new
-                   {
-                     name = node.Element("name").Value,
-                     englishValue = node.Element("englishValue").Value,
-                     frenchValue = node.Element("frenchValue").Value
-                   };
+                              {
+                                name = xElement1.Value,
+                                englishValue = xElement2.Value,
+                                frenchValue = xElement3.Value
+                              };
       foreach (var i in result)
       {
         languageDicoEn.Add(i.name, i.englishValue);
@@ -370,27 +376,30 @@ namespace CodeGenerationOnScreen
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
-      if (focusedControl is TextBox)
+      TextBox tb = focusedControl as TextBox;
+      if (tb != null)
       {
-        CutToClipboard((TextBox)focusedControl);
+        CutToClipboard(tb);
       }
     }
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
-      if (focusedControl is TextBox)
+      TextBox tb = focusedControl as TextBox;
+      if (tb != null)
       {
-        CopyToClipboard((TextBox)focusedControl);
+        CopyToClipboard(tb);
       }
     }
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
-      if (focusedControl is TextBox)
+      TextBox tb = focusedControl as TextBox;
+      if (tb != null)
       {
-        PasteFromClipboard((TextBox)focusedControl);
+        PasteFromClipboard(tb);
       }
     }
 
