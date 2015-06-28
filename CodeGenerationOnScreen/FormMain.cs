@@ -40,13 +40,13 @@ namespace CodeGenerationOnScreen
     readonly Dictionary<string, string> languageDicoFr = new Dictionary<string, string>();
     private const string Space = " ";
 
-    private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+    private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
       SaveWindowValue();
       Application.Exit();
     }
 
-    private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void AboutToolStripMenuItemClick(object sender, EventArgs e)
     {
       AboutBoxApplication aboutBoxApplication = new AboutBoxApplication();
       aboutBoxApplication.ShowDialog();
@@ -59,7 +59,7 @@ namespace CodeGenerationOnScreen
       Text += string.Format(" V{0}.{1}.{2}.{3}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart, fvi.FilePrivatePart);
     }
 
-    private void FormMain_Load(object sender, EventArgs e)
+    private void FormMainLoad(object sender, EventArgs e)
     {
       DisplayTitle();
       GetWindowValue();
@@ -272,12 +272,12 @@ namespace CodeGenerationOnScreen
       SaveWindowValue();
     }
 
-    private void frenchToolStripMenuItem_Click(object sender, EventArgs e)
+    private void FrenchToolStripMenuItemClick(object sender, EventArgs e)
     {
       SetLanguage(Language.French.ToString());
     }
 
-    private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+    private void EnglishToolStripMenuItemClick(object sender, EventArgs e)
     {
       SetLanguage(Language.English.ToString());
     }
@@ -367,7 +367,7 @@ namespace CodeGenerationOnScreen
       }
     }
 
-    private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
       if (focusedControl is TextBox)
@@ -376,7 +376,7 @@ namespace CodeGenerationOnScreen
       }
     }
 
-    private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+    private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
       if (focusedControl is TextBox)
@@ -385,7 +385,7 @@ namespace CodeGenerationOnScreen
       }
     }
 
-    private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+    private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
       if (focusedControl is TextBox)
@@ -394,7 +394,7 @@ namespace CodeGenerationOnScreen
       }
     }
 
-    private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+    private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
       Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
       if (focusedControl is TextBox)
@@ -403,7 +403,7 @@ namespace CodeGenerationOnScreen
       }
     }
 
-    private void CutToClipboard(TextBox tb, string errorMessage = "nothing")
+    private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
     {
       if (tb != ActiveControl) return;
       if (tb.Text == string.Empty)
@@ -488,7 +488,7 @@ namespace CodeGenerationOnScreen
               select FindFocusedControl(childControl)).FirstOrDefault(maybeFocusedControl => maybeFocusedControl != null);
     }
 
-    private void buttonConvert_Click(object sender, EventArgs e)
+    private void ButtonConvertClick(object sender, EventArgs e)
     {
       textBoxTarget.Text = string.Empty;
       if (textBoxSource.Text == string.Empty)
