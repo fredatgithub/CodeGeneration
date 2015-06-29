@@ -321,7 +321,6 @@ namespace CodeGenerationOnScreen
           indexToolStripMenuItem.Text = languageDicoEn["MenuHelpIndex"];
           searchToolStripMenuItem.Text = languageDicoEn["MenuHelpSearch"];
           aboutToolStripMenuItem.Text = languageDicoEn["MenuHelpAbout"];
-
           labelSourceText.Text = languageDicoEn["Sourcetext"];
           labelBeforeLine.Text = languageDicoEn["Beforeline"];
           labelAfterLine.Text = languageDicoEn["Afterline"];
@@ -375,7 +374,7 @@ namespace CodeGenerationOnScreen
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget})); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -385,7 +384,7 @@ namespace CodeGenerationOnScreen
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget })); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -395,7 +394,7 @@ namespace CodeGenerationOnScreen
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -405,10 +404,11 @@ namespace CodeGenerationOnScreen
 
     private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new Control()); // replace new control by your control like tabControlMain
-      if (focusedControl is TextBox)
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
+      TextBox box = focusedControl as TextBox;
+      if (box != null)
       {
-        //((TextBox)focusedControl).SelectAll;
+        box.SelectAll();
       }
     }
 
@@ -495,6 +495,19 @@ namespace CodeGenerationOnScreen
 
       return (from Control childControl in container.Controls
               select FindFocusedControl(childControl)).FirstOrDefault(maybeFocusedControl => maybeFocusedControl != null);
+    }
+
+    private static Control FindFocusedControl(IEnumerable<Control> container)
+    {
+      foreach (var control in container)
+      {
+        if (control.Focused)
+        {
+          return control;
+        }
+      }
+
+      return null;
     }
 
     private void ButtonConvertClick(object sender, EventArgs e)
