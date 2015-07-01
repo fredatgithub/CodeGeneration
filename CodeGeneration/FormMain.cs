@@ -662,5 +662,25 @@ namespace CodeGeneration
     {
       launchNotepad = checkBoxLaunchNotepad.Checked;
     }
+
+    private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+    }
   }
 }

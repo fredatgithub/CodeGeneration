@@ -374,7 +374,7 @@ namespace CodeGenerationOnScreen
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget})); 
+      Control focusedControl = FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget}); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -384,7 +384,7 @@ namespace CodeGenerationOnScreen
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget })); 
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -394,7 +394,7 @@ namespace CodeGenerationOnScreen
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -404,7 +404,7 @@ namespace CodeGenerationOnScreen
 
     private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox box = focusedControl as TextBox;
       if (box != null)
       {
