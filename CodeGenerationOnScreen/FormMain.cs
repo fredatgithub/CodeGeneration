@@ -374,7 +374,7 @@ namespace CodeGenerationOnScreen
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget})); 
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine })); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -384,7 +384,7 @@ namespace CodeGenerationOnScreen
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget })); 
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine })); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -394,7 +394,7 @@ namespace CodeGenerationOnScreen
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine }));
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -404,7 +404,7 @@ namespace CodeGenerationOnScreen
 
     private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }));
+      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine }));
       TextBox box = focusedControl as TextBox;
       if (box != null)
       {
@@ -499,15 +499,7 @@ namespace CodeGenerationOnScreen
 
     private static Control FindFocusedControl(IEnumerable<Control> container)
     {
-      foreach (var control in container)
-      {
-        if (control.Focused)
-        {
-          return control;
-        }
-      }
-
-      return null;
+      return container.FirstOrDefault(control => control.Focused);
     }
 
     private void ButtonConvertClick(object sender, EventArgs e)
