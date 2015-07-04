@@ -488,15 +488,7 @@ namespace CodeGenerationOnScreen
 
     private static Control FindFocusedControl(IEnumerable<Control> container)
     {
-      foreach (var control in container)
-      {
-        if (control.Focused)
-        {
-          return control;
-        }
-      }
-
-      return null;
+      return container.FirstOrDefault(control => control.Focused);
     }
 
     private void ButtonConvertClick(object sender, EventArgs e)
