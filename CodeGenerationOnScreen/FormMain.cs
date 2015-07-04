@@ -374,7 +374,7 @@ namespace CodeGenerationOnScreen
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine })); 
+      Control focusedControl = FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget}); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -384,7 +384,7 @@ namespace CodeGenerationOnScreen
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine })); 
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }); 
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -394,7 +394,7 @@ namespace CodeGenerationOnScreen
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine }));
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -404,7 +404,7 @@ namespace CodeGenerationOnScreen
 
     private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(FindFocusedControl(new List<Control> { textBoxSource, textBoxTarget, textBoxAfterLine, textBoxBeforeLine }));
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox box = focusedControl as TextBox;
       if (box != null)
       {
@@ -419,7 +419,7 @@ namespace CodeGenerationOnScreen
       {
         DisplayMessageOk(GetTranslatedString("ThereIs") + Space +
           GetTranslatedString(errorMessage) + Space +
-          GetTranslatedString("ToCut") + Space, GetTranslatedString(errorMessage),
+          GetTranslatedString("ToCut") + Space, ToPascalCase(GetTranslatedString(errorMessage)),
           MessageBoxButtons.OK);
         return;
       }
@@ -427,7 +427,7 @@ namespace CodeGenerationOnScreen
       if (tb.SelectedText == string.Empty)
       {
         DisplayMessageOk(GetTranslatedString("NoTextHasBeenSelected"),
-          GetTranslatedString(errorMessage), MessageBoxButtons.OK);
+          ToPascalCase(GetTranslatedString(errorMessage)), MessageBoxButtons.OK);
         return;
       }
 
@@ -441,14 +441,14 @@ namespace CodeGenerationOnScreen
       if (tb.Text == string.Empty)
       {
         DisplayMessageOk(GetTranslatedString("ThereIsNothingToCopy") + Space,
-          GetTranslatedString(message), MessageBoxButtons.OK);
+          ToPascalCase(GetTranslatedString(message)), MessageBoxButtons.OK);
         return;
       }
 
       if (tb.SelectedText == string.Empty)
       {
         DisplayMessageOk(GetTranslatedString("NoTextHasBeenSelected"),
-          GetTranslatedString(message), MessageBoxButtons.OK);
+          ToPascalCase(GetTranslatedString(message)), MessageBoxButtons.OK);
         return;
       }
 
@@ -486,20 +486,17 @@ namespace CodeGenerationOnScreen
       return result;
     }
 
-    private static Control FindFocusedControl(Control container)
-    {
-      foreach (Control childControl in container.Controls.Cast<Control>().Where(childControl => childControl.Focused))
-      {
-        return childControl;
-      }
-
-      return (from Control childControl in container.Controls
-              select FindFocusedControl(childControl)).FirstOrDefault(maybeFocusedControl => maybeFocusedControl != null);
-    }
-
     private static Control FindFocusedControl(IEnumerable<Control> container)
     {
-      return container.FirstOrDefault(control => control.Focused);
+      foreach (var control in container)
+      {
+        if (control.Focused)
+        {
+          return control;
+        }
+      }
+
+      return null;
     }
 
     private void ButtonConvertClick(object sender, EventArgs e)
@@ -526,6 +523,16 @@ namespace CodeGenerationOnScreen
           textBoxTarget.Text += textBoxBeforeLine.Text + line + textBoxAfterLine.Text + Environment.NewLine;
         }
       }
+    }
+
+    private static string ToPascalCase(string s)
+    {
+      if (s == string.Empty)
+      {
+        return string.Empty;
+      }
+
+      return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
     }
   }
 }

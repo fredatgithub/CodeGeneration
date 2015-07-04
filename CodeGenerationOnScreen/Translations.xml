@@ -194,5 +194,15 @@
       <englishValue>Source text</englishValue>
       <frenchValue>Texte source</frenchValue>
     </term>
+    <term>
+      <name>nothing</name>
+      <englishValue>nothing</englishValue>
+      <frenchValue>rien</frenchValue>
+    </term>
+    <term>
+      <name>ToCut</name>
+      <englishValue>to cut</englishValue>
+      <frenchValue>à couper</frenchValue>
+    </term>
   </terms>
 </Document>
