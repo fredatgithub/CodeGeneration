@@ -204,5 +204,15 @@
       <englishValue>to cut</englishValue>
       <frenchValue>à couper</frenchValue>
     </term>
+    <term>
+      <name>The source text cannot be empty</name>
+      <englishValue>The source text cannot be empty</englishValue>
+      <frenchValue>Le texte source ne peut pas être vide</frenchValue>
+    </term>
+    <term>
+      <name>Text Empty</name>
+      <englishValue>Text Empty</englishValue>
+      <frenchValue>Text vide</frenchValue>
+    </term>
   </terms>
 </Document>

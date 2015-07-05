@@ -374,7 +374,7 @@ namespace CodeGenerationOnScreen
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control>{textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget}); 
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -384,7 +384,7 @@ namespace CodeGenerationOnScreen
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget }); 
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxAfterLine, textBoxBeforeLine, textBoxSource, textBoxTarget });
       TextBox tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -497,10 +497,12 @@ namespace CodeGenerationOnScreen
       switch (language.ToLower())
       {
         case "english":
-          result = languageDicoEn[index];
+          result = languageDicoEn.ContainsKey(index) ? languageDicoEn[index] :
+           "the term: \"" + index + "\" has not been translated yet.\nPlease tell the developer to translate this term";
           break;
         case "french":
-          result = languageDicoFr[index];
+          result = languageDicoFr.ContainsKey(index) ? languageDicoFr[index] :
+            "the term: \"" + index + "\" has not been translated yet.\nPlease tell the developer to translate this term";
           break;
       }
 
@@ -512,7 +514,8 @@ namespace CodeGenerationOnScreen
       textBoxTarget.Text = string.Empty;
       if (textBoxSource.Text == string.Empty)
       {
-        DisplayMessageOk("The source text cannot be empty", "Text Empty", MessageBoxButtons.OK);
+        DisplayMessageOk(GetTranslatedString("The source text cannot be empty"),
+          GetTranslatedString("Text Empty"), MessageBoxButtons.OK);
         return;
       }
 
