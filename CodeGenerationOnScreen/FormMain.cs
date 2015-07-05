@@ -468,6 +468,27 @@ namespace CodeGenerationOnScreen
       MessageBox.Show(this, message, title, buttons);
     }
 
+    private static Control FindFocusedControl(IEnumerable<Control> container)
+    {
+      return container.FirstOrDefault(control => control.Focused);
+    }
+
+    private string GetTranslatedString(string index, string language)
+    {
+      string result = string.Empty;
+      switch (language.ToLower())
+      {
+        case "english":
+          result = languageDicoEn[index];
+          break;
+        case "french":
+          result = languageDicoFr[index];
+          break;
+      }
+
+      return result;
+    }
+
     private string GetTranslatedString(string index)
     {
       string result = string.Empty;
@@ -484,11 +505,6 @@ namespace CodeGenerationOnScreen
       }
 
       return result;
-    }
-
-    private static Control FindFocusedControl(IEnumerable<Control> container)
-    {
-      return container.FirstOrDefault(control => control.Focused);
     }
 
     private void ButtonConvertClick(object sender, EventArgs e)
