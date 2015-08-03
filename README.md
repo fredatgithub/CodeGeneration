@@ -8,7 +8,7 @@ Simple application that adds text before and after each line in a code text file
 [![Debug Build] (https://img.shields.io/badge/Debug Build-Passed-brightgreen.svg)] (https://github.com/fredatgithub/CodeGeneration#Build status)
 [![Release Build] (https://img.shields.io/badge/Release Build-Passed-brightgreen.svg)] (https://github.com/fredatgithub/CodeGeneration#Build status)
 [![Windows build] (https://img.shields.io/badge/Windows build-Passed-brightgreen.svg)] (https://github.com/fredatgithub/CodeGeneration#Build Status)
-[![Release status] (https://img.shields.io/badge/Release-1.1-brightgreen.svg)] (https://github.com/fredatgithub/CodeGeneration#Build Status)
+[![Release status] (https://img.shields.io/badge/Release-1.0-brightgreen.svg)] (https://github.com/fredatgithub/CodeGeneration#Build Status)
 
 [![Linux status] (https://img.shields.io/badge/Linux-none-red.svg)] (https://github.com/fredatgithub/CodeGeneration#Build Status)
 [![NuGet status] (https://img.shields.io/badge/NuGet-none-red.svg)] (https://github.com/fredatgithub/CodeGeneration#Build Status)
