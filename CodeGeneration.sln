@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneration", "CodeGeneration\CodeGeneration.csproj", "{B492FE99-F506-48C7-8D6D-B35C2CDEF668}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerationOnScreen", "CodeGenerationOnScreen\CodeGenerationOnScreen.csproj", "{6DAB8086-721C-4897-BFCA-411E6D5C8506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationChecker", "TranslationChecker\TranslationChecker.csproj", "{F5866582-DFF2-4AC3-8A78-3B6EF41A59D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{6DAB8086-721C-4897-BFCA-411E6D5C8506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DAB8086-721C-4897-BFCA-411E6D5C8506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DAB8086-721C-4897-BFCA-411E6D5C8506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5866582-DFF2-4AC3-8A78-3B6EF41A59D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5866582-DFF2-4AC3-8A78-3B6EF41A59D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5866582-DFF2-4AC3-8A78-3B6EF41A59D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5866582-DFF2-4AC3-8A78-3B6EF41A59D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
