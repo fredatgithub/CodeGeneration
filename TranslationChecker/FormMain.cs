@@ -261,6 +261,7 @@ namespace TranslationChecker
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
+      textBoxSolutionPath.Text = Settings.Default.textBoxSolutionPath;
     }
 
     private void SaveWindowValue()
@@ -271,6 +272,7 @@ namespace TranslationChecker
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.textBoxSolutionPath = textBoxSolutionPath.Text;
       Settings.Default.Save();
     }
 
@@ -380,7 +382,8 @@ namespace TranslationChecker
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
-
+          labelSolutionPath.Text = _languageDicoEn["Solution Path"];
+          buttonCheckTranslation.Text = _languageDicoEn["Check Translated strings"];
           _currentLanguage = "English";
           break;
         case "French":
@@ -416,7 +419,8 @@ namespace TranslationChecker
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
-
+          labelSolutionPath.Text = _languageDicoFr["Solution Path"];
+          buttonCheckTranslation.Text = _languageDicoFr["Check Translated strings"];
           _currentLanguage = "French";
           break;
         default:
@@ -612,7 +616,7 @@ namespace TranslationChecker
         }
         else
         {
-          control.Left = position + 10;
+          control.Left = position + 15;
           position += control.Width;
         }
       }
@@ -620,7 +624,7 @@ namespace TranslationChecker
 
     private void AdjustAllControls()
     {
-      AdjustControls();
+      AdjustControls(labelSolutionPath, textBoxSolutionPath, buttonPickSolutionPath);
     }
   }
 }

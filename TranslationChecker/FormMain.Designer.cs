@@ -372,21 +372,21 @@
       this.labelSolutionPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelSolutionPath.Location = new System.Drawing.Point(21, 78);
       this.labelSolutionPath.Name = "labelSolutionPath";
-      this.labelSolutionPath.Size = new System.Drawing.Size(110, 17);
+      this.labelSolutionPath.Size = new System.Drawing.Size(105, 17);
       this.labelSolutionPath.TabIndex = 19;
-      this.labelSolutionPath.Text = "Solution Path:";
+      this.labelSolutionPath.Text = "Solution Path";
       // 
       // textBoxSolutionPath
       // 
-      this.textBoxSolutionPath.Location = new System.Drawing.Point(137, 76);
+      this.textBoxSolutionPath.Location = new System.Drawing.Point(176, 76);
       this.textBoxSolutionPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxSolutionPath.Name = "textBoxSolutionPath";
-      this.textBoxSolutionPath.Size = new System.Drawing.Size(713, 22);
+      this.textBoxSolutionPath.Size = new System.Drawing.Size(674, 22);
       this.textBoxSolutionPath.TabIndex = 18;
       // 
       // buttonPickSolutionPath
       // 
-      this.buttonPickSolutionPath.Location = new System.Drawing.Point(856, 76);
+      this.buttonPickSolutionPath.Location = new System.Drawing.Point(868, 76);
       this.buttonPickSolutionPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonPickSolutionPath.Name = "buttonPickSolutionPath";
       this.buttonPickSolutionPath.Size = new System.Drawing.Size(33, 23);
@@ -397,7 +397,7 @@
       // buttonCheckTranslation
       // 
       this.buttonCheckTranslation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonCheckTranslation.Location = new System.Drawing.Point(137, 122);
+      this.buttonCheckTranslation.Location = new System.Drawing.Point(24, 120);
       this.buttonCheckTranslation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonCheckTranslation.Name = "buttonCheckTranslation";
       this.buttonCheckTranslation.Size = new System.Drawing.Size(209, 33);
@@ -410,11 +410,11 @@
       this.textBoxResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxResult.Location = new System.Drawing.Point(137, 175);
+      this.textBoxResult.Location = new System.Drawing.Point(24, 175);
       this.textBoxResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
-      this.textBoxResult.Size = new System.Drawing.Size(752, 325);
+      this.textBoxResult.Size = new System.Drawing.Size(865, 325);
       this.textBoxResult.TabIndex = 27;
       // 
       // FormMain

@@ -174,16 +174,16 @@
       <englishValue>Large</englishValue>
       <frenchValue>Grand</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Solution Path</name>
+      <englishValue>Solution Path</englishValue>
+      <frenchValue>Chemin de la solution</frenchValue>
+    </term>
+    <term>
+      <name>Check Translated strings</name>
+      <englishValue>Check Translated strings</englishValue>
+      <frenchValue>Vérifer les chaines traduites</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>
