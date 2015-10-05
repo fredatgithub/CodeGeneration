@@ -70,6 +70,7 @@
       this.buttonPickSolutionPath = new System.Windows.Forms.Button();
       this.buttonCheckTranslation = new System.Windows.Forms.Button();
       this.textBoxResult = new System.Windows.Forms.TextBox();
+      this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -393,6 +394,7 @@
       this.buttonPickSolutionPath.TabIndex = 17;
       this.buttonPickSolutionPath.Text = "...";
       this.buttonPickSolutionPath.UseVisualStyleBackColor = true;
+      this.buttonPickSolutionPath.Click += new System.EventHandler(this.buttonPickSolutionPath_Click);
       // 
       // buttonCheckTranslation
       // 
@@ -400,10 +402,11 @@
       this.buttonCheckTranslation.Location = new System.Drawing.Point(24, 120);
       this.buttonCheckTranslation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonCheckTranslation.Name = "buttonCheckTranslation";
-      this.buttonCheckTranslation.Size = new System.Drawing.Size(209, 33);
+      this.buttonCheckTranslation.Size = new System.Drawing.Size(298, 33);
       this.buttonCheckTranslation.TabIndex = 26;
       this.buttonCheckTranslation.Text = "Check Translated strings";
       this.buttonCheckTranslation.UseVisualStyleBackColor = true;
+      this.buttonCheckTranslation.Click += new System.EventHandler(this.buttonCheckTranslation_Click);
       // 
       // textBoxResult
       // 
@@ -416,6 +419,10 @@
       this.textBoxResult.Name = "textBoxResult";
       this.textBoxResult.Size = new System.Drawing.Size(865, 325);
       this.textBoxResult.TabIndex = 27;
+      // 
+      // openFileDialog1
+      // 
+      this.openFileDialog1.FileName = "openFileDialog1";
       // 
       // FormMain
       // 
@@ -486,5 +493,6 @@
     private System.Windows.Forms.Button buttonPickSolutionPath;
     private System.Windows.Forms.Button buttonCheckTranslation;
     private System.Windows.Forms.TextBox textBoxResult;
+    private System.Windows.Forms.OpenFileDialog openFileDialog1;
   }
 }

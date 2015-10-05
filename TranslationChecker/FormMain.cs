@@ -23,6 +23,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TranslationChecker.Properties;
@@ -625,6 +626,51 @@ namespace TranslationChecker
     private void AdjustAllControls()
     {
       AdjustControls(labelSolutionPath, textBoxSolutionPath, buttonPickSolutionPath);
+    }
+
+    private void buttonCheckTranslation_Click(object sender, EventArgs e)
+    {
+      if (textBoxSolutionPath.Text == string.Empty)
+      {
+        DisplayMessage(Translate("The solution path cannot be empty"),
+          Translate("Empty field"), MessageBoxButtons.OK);
+        return;
+      }
+
+      textBoxResult.Text = string.Empty;
+    }
+
+    private void buttonPickSolutionPath_Click(object sender, EventArgs e)
+    {
+      openFileDialog1.Multiselect = false;
+      openFileDialog1.Filter = Translate("Solution Files") + CreateFilterString("sln") +
+        Punctuation.Pipe + Translate("Projects Files") + CreateFilterString("csproj");
+      // sample:
+      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
+      openFileDialog1.FilterIndex = 1;
+      openFileDialog1.FileName = string.Empty;
+      if (openFileDialog1.ShowDialog() == DialogResult.OK)
+      {
+        textBoxSolutionPath.Text = openFileDialog1.FileName;
+      }
+    }
+
+    private static string CreateFilterString(string extension)
+    {
+      // sample:
+      //"solution files (*.sln)|*.sln|Projects files (*.csproj)|*.csproj";
+      var result = new StringBuilder();
+      result.Append(Punctuation.OneSpace);
+      result.Append(Punctuation.OpenParenthesis);
+      result.Append(Punctuation.Multiply);
+      result.Append(Punctuation.Period);
+      result.Append(extension);
+      result.Append(Punctuation.CloseParenthesis);
+      result.Append(Punctuation.Pipe);
+      result.Append(Punctuation.Multiply);
+      result.Append(Punctuation.Period);
+      result.Append(extension);
+      return result.ToString();
     }
   }
 }

@@ -184,26 +184,26 @@
       <englishValue>Check Translated strings</englishValue>
       <frenchValue>Vérifer les chaines traduites</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Empty field</name>
+      <englishValue>Empty field</englishValue>
+      <frenchValue>Champ vide</frenchValue>
+    </term>
+    <term>
+      <name>The solution path cannot be empty</name>
+      <englishValue>The solution path cannot be empty</englishValue>
+      <frenchValue>Le chemin de la solution ne peut être vide</frenchValue>
+    </term>
+    <term>
+      <name>Solution Files</name>
+      <englishValue>Solution Files</englishValue>
+      <frenchValue>Fichiers solutions</frenchValue>
+    </term>
+    <term>
+      <name>Projects Files</name>
+      <englishValue>Projects Files</englishValue>
+      <frenchValue>Fichiers projets</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>
