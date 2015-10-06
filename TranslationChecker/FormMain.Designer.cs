@@ -379,10 +379,10 @@
       // 
       // textBoxSolutionPath
       // 
-      this.textBoxSolutionPath.Location = new System.Drawing.Point(176, 76);
+      this.textBoxSolutionPath.Location = new System.Drawing.Point(205, 76);
       this.textBoxSolutionPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxSolutionPath.Name = "textBoxSolutionPath";
-      this.textBoxSolutionPath.Size = new System.Drawing.Size(674, 22);
+      this.textBoxSolutionPath.Size = new System.Drawing.Size(645, 22);
       this.textBoxSolutionPath.TabIndex = 18;
       // 
       // buttonPickSolutionPath
@@ -402,7 +402,7 @@
       this.buttonCheckTranslation.Location = new System.Drawing.Point(24, 120);
       this.buttonCheckTranslation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.buttonCheckTranslation.Name = "buttonCheckTranslation";
-      this.buttonCheckTranslation.Size = new System.Drawing.Size(298, 33);
+      this.buttonCheckTranslation.Size = new System.Drawing.Size(265, 33);
       this.buttonCheckTranslation.TabIndex = 26;
       this.buttonCheckTranslation.Text = "Check Translated strings";
       this.buttonCheckTranslation.UseVisualStyleBackColor = true;

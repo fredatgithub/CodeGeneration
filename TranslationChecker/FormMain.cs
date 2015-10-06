@@ -20,6 +20,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -638,6 +639,80 @@ namespace TranslationChecker
       }
 
       textBoxResult.Text = string.Empty;
+      var listOfProjects = new List<string>();
+      var listOfTranslatedTerms = new List<Tuple<string, string>>();
+      var rootSolutionPath = GetDirectoryFileNameAndExtension(textBoxSolutionPath.Text)[0];
+      var sr = new StreamReader(textBoxSolutionPath.Text);
+      string line = string.Empty;
+      while (sr.Peek() >= 0)
+      {
+        line = sr.ReadLine();
+        if (line.StartsWith("Project("))
+        {
+          listOfProjects.Add(line.Split('\"')[3]);
+        }
+      }
+      sr.Close();
+      bool translationsFilefound = false;
+      foreach (string project in listOfProjects)
+      {
+        string tmpPath = AddSlash(rootSolutionPath) + project;
+        foreach (var file in Directory.EnumerateFiles(tmpPath))
+        {
+          if (file == "Translations.xml")
+          {
+            translationsFilefound = true;
+            // TODO read the file and get all translations terms
+
+          }
+          if (file.EndsWith(".cs"))
+          {
+            // if file contains("Translate")
+            var sr2 = new StreamReader(file);
+            while (sr2.Peek() >= 0)
+            {
+              line = sr2.ReadLine();
+              if (line.Contains("Translate"))
+              {
+                // TODO check if translation is not in the translations.xml file
+                listOfTranslatedTerms.Add(new Tuple<string, string>(file, line));
+              }
+            }
+            sr2.Close();
+          }
+        }
+      }
+    }
+
+    private static string GoBackOneDirectory(string rootPath)
+    {
+      if (rootPath == string.Empty)
+      {
+        return string.Empty;
+      }
+
+      string result = string.Empty;
+      var tmpResult = rootPath.Split('\\');
+      for (int i = 0; i < tmpResult.Length - 1; i++)
+      {
+        result += tmpResult[i] + "\\";
+      }
+
+      return result;
+    }
+
+    private static string AddSlash(string myString)
+    {
+      return myString.EndsWith("\\") ? myString : myString + "\\";
+    }
+
+    private static string[] GetDirectoryFileNameAndExtension(string filePath)
+    {
+      string directory = Path.GetDirectoryName(filePath);
+      string fileName = Path.GetFileNameWithoutExtension(filePath);
+      string extension = Path.GetExtension(filePath);
+
+      return new[] { directory, fileName, extension };
     }
 
     private void buttonPickSolutionPath_Click(object sender, EventArgs e)
