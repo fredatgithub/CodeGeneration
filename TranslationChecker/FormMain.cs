@@ -654,6 +654,7 @@ namespace TranslationChecker
       }
       sr.Close();
       bool translationsFilefound = false;
+      var listOfTranslatedTermsInFile = new List<Tuple<string, string, string>>();
       foreach (string project in listOfProjects)
       {
         string tmpPath = AddSlash(rootSolutionPath) + project;
@@ -662,9 +663,10 @@ namespace TranslationChecker
           if (file == "Translations.xml")
           {
             translationsFilefound = true;
-            // TODO read the file and get all translations terms
-
+            // TODO read the translations.xml file for that project and get all translations terms
+            
           }
+
           if (file.EndsWith(".cs"))
           {
             // if file contains("Translate")
@@ -672,10 +674,19 @@ namespace TranslationChecker
             while (sr2.Peek() >= 0)
             {
               line = sr2.ReadLine();
-              if (line.Contains("Translate"))
+              if (line.Contains("Translate(\"") && !line.Contains("Translate(string"))
               {
                 // TODO check if translation is not in the translations.xml file
-                listOfTranslatedTerms.Add(new Tuple<string, string>(file, line));
+                // extract the term
+                var tmpTermArray = line.Split('\"');
+                var tmpTerm = line.Split('\"')[1];
+                if (!_languageDicoEn.ContainsKey(tmpTerm)) // should be listOfTranslatedTermsInFile
+                {
+                  listOfTranslatedTerms.Add(new Tuple<string, string>(file, line));
+                  textBoxResult.Text += file + Punctuation.OneSpace + Punctuation.Dash +
+                    Punctuation.OneSpace + tmpTerm + Punctuation.CrLf;
+                }
+                
               }
             }
             sr2.Close();

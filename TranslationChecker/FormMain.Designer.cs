@@ -413,10 +413,12 @@
       this.textBoxResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.textBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxResult.Location = new System.Drawing.Point(24, 175);
       this.textBoxResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
+      this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.textBoxResult.Size = new System.Drawing.Size(865, 325);
       this.textBoxResult.TabIndex = 27;
       // 
