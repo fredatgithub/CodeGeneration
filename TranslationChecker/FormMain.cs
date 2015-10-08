@@ -638,6 +638,8 @@ namespace TranslationChecker
         return;
       }
 
+      buttonCheckTranslation.Enabled = false;
+      Application.DoEvents();
       textBoxResult.Text = string.Empty;
       var listOfProjects = new List<string>();
       var listOfTranslatedTerms = new List<Tuple<string, string>>();
@@ -658,41 +660,64 @@ namespace TranslationChecker
       foreach (string project in listOfProjects)
       {
         string tmpPath = AddSlash(rootSolutionPath) + project;
+        listOfTranslatedTermsInFile = new List<Tuple<string, string, string>>();
         foreach (var file in Directory.EnumerateFiles(tmpPath))
         {
           if (file == "Translations.xml")
           {
             translationsFilefound = true;
-            // TODO read the translations.xml file for that project and get all translations terms
-            
-          }
-
-          if (file.EndsWith(".cs"))
-          {
-            // if file contains("Translate")
-            var sr2 = new StreamReader(file);
-            while (sr2.Peek() >= 0)
-            {
-              line = sr2.ReadLine();
-              if (line.Contains("Translate(\"") && !line.Contains("Translate(string"))
+            // read the translations.xml file for that project and get all translations terms
+            XDocument xDoc = XDocument.Load(file);
+            var result = from node in xDoc.Descendants("term")
+              where node.HasElements
+              let xElementName = node.Element("name")
+              where xElementName != null
+              let xElementEnglish = node.Element("englishValue")
+              where xElementEnglish != null
+              let xElementFrench = node.Element("frenchValue")
+              where xElementFrench != null
+              select new
               {
-                // TODO check if translation is not in the translations.xml file
-                // extract the term
-                var tmpTermArray = line.Split('\"');
-                var tmpTerm = line.Split('\"')[1];
-                if (!_languageDicoEn.ContainsKey(tmpTerm)) // should be listOfTranslatedTermsInFile
-                {
-                  listOfTranslatedTerms.Add(new Tuple<string, string>(file, line));
-                  textBoxResult.Text += file + Punctuation.OneSpace + Punctuation.Dash +
-                    Punctuation.OneSpace + tmpTerm + Punctuation.CrLf;
-                }
-                
-              }
+                name = xElementName.Value,
+                englishValue = xElementEnglish.Value,
+                frenchValue = xElementFrench.Value
+              };
+            foreach (var i in result)
+            {
+              listOfTranslatedTermsInFile.Add(new Tuple<string, string, string>(i.name,
+                i.englishValue, i.frenchValue));
             }
-            sr2.Close();
+
+            if (file.EndsWith(".cs"))
+            {
+              // if file contains("Translate")
+              var sr2 = new StreamReader(file);
+              while (sr2.Peek() >= 0)
+              {
+                line = sr2.ReadLine();
+                if (line.Contains("Translate(\"") && !line.Contains("Translate(string"))
+                {
+                  // TODO check if translation is not in the translations.xml file
+                  // extract the term
+                  var tmpTermArray = line.Split('\"');
+                  var tmpTerm = line.Split('\"')[1];
+                  if (!_languageDicoEn.ContainsKey(tmpTerm)) // should be listOfTranslatedTermsInFile
+                  {
+                    listOfTranslatedTerms.Add(new Tuple<string, string>(file, line));
+                    textBoxResult.Text += file + Punctuation.OneSpace + Punctuation.Dash +
+                                          Punctuation.OneSpace + tmpTerm + Punctuation.CrLf;
+                  }
+
+                }
+              }
+              sr2.Close();
+            }
           }
         }
       }
+
+      buttonCheckTranslation.Enabled = true;
+      Application.DoEvents();
     }
 
     private static string GoBackOneDirectory(string rootPath)
