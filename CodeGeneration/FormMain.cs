@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License(MIT)
 Copyright(c) 2015 Freddy Juhel
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -244,11 +244,7 @@ namespace CodeGeneration
     {
       List<string> minimumVersion = new List<string>
       {
-        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
-        "<Document>",
-        "<DocumentVersion>",
-        "<version> 1.0 </version>",
-        "</DocumentVersion>",
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -380,8 +376,7 @@ namespace CodeGeneration
       "<englishValue>About</englishValue>",
       "<frenchValue>A propos de ...</frenchValue>",
     "</term>",
-  "</terms>",
-"</Document>"
+  "</terms>"
       };
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
