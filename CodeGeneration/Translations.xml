@@ -1425,4 +1425,9 @@
     <englishValue>Last file processed</englishValue>
     <frenchValue>Dernier fichier traité</frenchValue>
   </term>
+   <term>
+    <name>Number of quote</name>
+    <englishValue>Number of quote</englishValue>
+    <frenchValue>Nombre de citation</frenchValue>
+  </term>
 </terms>
