@@ -65,9 +65,9 @@
       this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.button1 = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
-      this.textBox1 = new System.Windows.Forms.TextBox();
+      this.buttonPeekDirectory = new System.Windows.Forms.Button();
+      this.labelPath = new System.Windows.Forms.Label();
+      this.textBoxInitialPath = new System.Windows.Forms.TextBox();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -367,39 +367,40 @@
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
-      // button1
+      // buttonPeekDirectory
       // 
-      this.button1.Location = new System.Drawing.Point(710, 70);
-      this.button1.Name = "button1";
-      this.button1.Size = new System.Drawing.Size(75, 23);
-      this.button1.TabIndex = 2;
-      this.button1.Text = "button1";
-      this.button1.UseVisualStyleBackColor = true;
+      this.buttonPeekDirectory.Location = new System.Drawing.Point(710, 70);
+      this.buttonPeekDirectory.Name = "buttonPeekDirectory";
+      this.buttonPeekDirectory.Size = new System.Drawing.Size(34, 23);
+      this.buttonPeekDirectory.TabIndex = 2;
+      this.buttonPeekDirectory.Text = "...";
+      this.buttonPeekDirectory.UseVisualStyleBackColor = true;
+      this.buttonPeekDirectory.Click += new System.EventHandler(this.buttonPeekDirectory_Click);
       // 
-      // label1
+      // labelPath
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(29, 71);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(46, 17);
-      this.label1.TabIndex = 3;
-      this.label1.Text = "label1";
+      this.labelPath.AutoSize = true;
+      this.labelPath.Location = new System.Drawing.Point(29, 71);
+      this.labelPath.Name = "labelPath";
+      this.labelPath.Size = new System.Drawing.Size(37, 17);
+      this.labelPath.TabIndex = 3;
+      this.labelPath.Text = "Path";
       // 
-      // textBox1
+      // textBoxInitialPath
       // 
-      this.textBox1.Location = new System.Drawing.Point(110, 71);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(579, 22);
-      this.textBox1.TabIndex = 4;
+      this.textBoxInitialPath.Location = new System.Drawing.Point(110, 71);
+      this.textBoxInitialPath.Name = "textBoxInitialPath";
+      this.textBoxInitialPath.Size = new System.Drawing.Size(579, 22);
+      this.textBoxInitialPath.TabIndex = 4;
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
-      this.Controls.Add(this.textBox1);
-      this.Controls.Add(this.label1);
-      this.Controls.Add(this.button1);
+      this.Controls.Add(this.textBoxInitialPath);
+      this.Controls.Add(this.labelPath);
+      this.Controls.Add(this.buttonPeekDirectory);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -454,8 +455,8 @@
     private System.Windows.Forms.ToolStripMenuItem SmallToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
-    private System.Windows.Forms.Button button1;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.Button buttonPeekDirectory;
+    private System.Windows.Forms.Label labelPath;
+    private System.Windows.Forms.TextBox textBoxInitialPath;
   }
 }

@@ -91,9 +91,7 @@ namespace ReplaceStringInManyProject
       {
         CreateLanguageFile();
       }
-
-      // read the translation file and feed the language
-      //XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);//keep to search this line in all my previous projects
+      
       XDocument xDoc;
       try
       {
@@ -121,14 +119,14 @@ namespace ReplaceStringInManyProject
                    };
       foreach (var i in result)
       {
-        //_languageDicoEn.Add(i.name, i.englishValue); // keep to search this line in all my previous projects
         if (!_languageDicoEn.ContainsKey(i.name))
         {
           _languageDicoEn.Add(i.name, i.englishValue);
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show("Your xml file: " + Settings.Default.LanguageFileName +
+            " has duplicate like: " + i.name);
         }
 
         if (!_languageDicoFr.ContainsKey(i.name))
@@ -137,7 +135,8 @@ namespace ReplaceStringInManyProject
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show("Your xml file: "+ Settings.Default.LanguageFileName +
+            " has duplicate like: " + i.name);
         }
       }
     }
@@ -295,6 +294,7 @@ namespace ReplaceStringInManyProject
       Height = Settings.Default.WindowHeight;
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
+      textBoxInitialPath.Text = Settings.Default.textBoxInitialPath;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -307,6 +307,7 @@ namespace ReplaceStringInManyProject
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.textBoxInitialPath = textBoxInitialPath.Text;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
@@ -409,8 +410,8 @@ namespace ReplaceStringInManyProject
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
-
-
+          labelPath.Text = _languageDicoEn["Path"] + Punctuation.Colon;
+          
           _currentLanguage = "English";
           break;
         case "French":
@@ -446,6 +447,7 @@ namespace ReplaceStringInManyProject
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
+          labelPath.Text = _languageDicoEn["Path"] + Punctuation.OneSpace + Punctuation.Colon;
 
           _currentLanguage = "French";
           break;
@@ -661,6 +663,11 @@ namespace ReplaceStringInManyProject
       {
         _configurationOptions = frmOptions.ConfigurationOptions2;
       }
+    }
+
+    private void buttonPeekDirectory_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }
