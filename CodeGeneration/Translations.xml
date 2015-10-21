@@ -1435,4 +1435,29 @@
     <englishValue>Path</englishValue>
     <frenchValue>Chemin</frenchValue>
   </term>
+  <term>
+    <name>Initial path</name>
+    <englishValue>Initial path</englishValue>
+    <frenchValue>Chemin initial</frenchValue>
+  </term>
+  <term>
+    <name>File to change</name>
+    <englishValue>File to change</englishValue>
+    <frenchValue>Fichier à changer</frenchValue>
+  </term>
+  <term>
+    <name>String to search</name>
+    <englishValue>String to search</englishValue>
+    <frenchValue>chaîne à chercher</frenchValue>
+  </term>
+  <term>
+    <name>Replace by</name>
+    <englishValue>Replace by</englishValue>
+    <frenchValue>Remplacer par</frenchValue>
+  </term>
+  <term>
+    <name>Replace</name>
+    <englishValue>Replace</englishValue>
+    <frenchValue>Remplacer</frenchValue>
+  </term>
 </terms>
