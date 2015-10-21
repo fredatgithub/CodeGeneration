@@ -473,9 +473,9 @@
       // buttonReplace
       // 
       this.buttonReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonReplace.Location = new System.Drawing.Point(136, 253);
+      this.buttonReplace.Location = new System.Drawing.Point(165, 253);
       this.buttonReplace.Name = "buttonReplace";
-      this.buttonReplace.Size = new System.Drawing.Size(80, 29);
+      this.buttonReplace.Size = new System.Drawing.Size(99, 29);
       this.buttonReplace.TabIndex = 14;
       this.buttonReplace.Text = "Replace";
       this.buttonReplace.UseVisualStyleBackColor = true;
@@ -497,7 +497,7 @@
       this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonSearch.Location = new System.Drawing.Point(32, 253);
       this.buttonSearch.Name = "buttonSearch";
-      this.buttonSearch.Size = new System.Drawing.Size(80, 29);
+      this.buttonSearch.Size = new System.Drawing.Size(116, 29);
       this.buttonSearch.TabIndex = 16;
       this.buttonSearch.Text = "Search";
       this.buttonSearch.UseVisualStyleBackColor = true;

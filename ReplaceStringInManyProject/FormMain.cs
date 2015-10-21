@@ -676,7 +676,10 @@ namespace ReplaceStringInManyProject
 
     private void AdjustAllControls()
     {
-      AdjustControls(labelPath, textBoxInitialPath, buttonPeekDirectory); 
+      AdjustControls(labelPath, textBoxInitialPath, buttonPeekDirectory);
+      AdjustControls(labelFileToChange, textBoxfileToChange, buttonPeekFile);
+      AdjustControls(labelStringToSearch, textBoxStringToSearch);
+      AdjustControls(labelReplaceBy, textBoxReplaceBy);
     }
 
     private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -700,16 +703,19 @@ namespace ReplaceStringInManyProject
 
     private void textBoxInitialPath_TextChanged(object sender, EventArgs e)
     {
-      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
-      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      if (textBoxInitialPath.Text == string.Empty)
+      {
+        buttonSearch.Enabled = false;
+        buttonReplace.Enabled = false;
+      }
     }
 
     private static void SetButtonEnabled(Button button, params TextBox[] textBoxes)
     {
-      bool result = false;
-      foreach (TextBox box in textBoxes.Where(box => box.Text.Length != 0))
+      bool result = true;
+      foreach (TextBox box in textBoxes.Where(box => box.Text.Length == 0))
       {
-        result = true;
+        result = false;
       }
 
       button.Enabled = result;
@@ -717,21 +723,29 @@ namespace ReplaceStringInManyProject
 
     private void textBoxfileToChange_TextChanged(object sender, EventArgs e)
     {
-      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
-      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      if (textBoxfileToChange.Text == string.Empty)
+      {
+        buttonSearch.Enabled = false;
+        buttonReplace.Enabled = false;
+      }
     }
 
     private void textBoxStringToSearch_TextChanged(object sender, EventArgs e)
     {
-      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
-      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      if (textBoxStringToSearch.Text == string.Empty)
+      {
+        buttonSearch.Enabled = false;
+        buttonReplace.Enabled = false;
+      }
     }
 
     private void textBoxReplaceBy_TextChanged(object sender, EventArgs e)
     {
-      //SetButtonEnabled(buttonSearch, textBoxInitialPath);
-      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
-      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      if (textBoxReplaceBy.Text == string.Empty)
+      {
+        buttonSearch.Enabled = false;
+        buttonReplace.Enabled = false;
+      }
     }
 
     private void listViewResult_SelectedIndexChanged(object sender, EventArgs e)
