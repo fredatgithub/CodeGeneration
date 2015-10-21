@@ -142,5 +142,41 @@ namespace ReplaceStringInManyProject.Properties {
                 this["textBoxInitialPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxfileToChange {
+            get {
+                return ((string)(this["textBoxfileToChange"]));
+            }
+            set {
+                this["textBoxfileToChange"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxStringToSearch {
+            get {
+                return ((string)(this["textBoxStringToSearch"]));
+            }
+            set {
+                this["textBoxStringToSearch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string textBoxReplaceBy {
+            get {
+                return ((string)(this["textBoxReplaceBy"]));
+            }
+            set {
+                this["textBoxReplaceBy"] = value;
+            }
+        }
     }
 }

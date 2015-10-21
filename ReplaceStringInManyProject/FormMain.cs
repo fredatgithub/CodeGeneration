@@ -71,6 +71,8 @@ namespace ReplaceStringInManyProject
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
     }
 
     private void LoadConfigurationOptions()
@@ -410,8 +412,13 @@ namespace ReplaceStringInManyProject
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
-          labelPath.Text = _languageDicoEn["Path"] + Punctuation.Colon;
-          
+          labelPath.Text = _languageDicoEn["Initial path"] + Punctuation.Colon;
+          labelFileToChange.Text = _languageDicoEn["File to change"] + Punctuation.Colon;
+          labelStringToSearch.Text = _languageDicoEn["String to search"] + Punctuation.Colon;
+          labelReplaceBy.Text = _languageDicoEn["Replace by"] + Punctuation.Colon;
+          buttonSearch.Text = _languageDicoEn["Search"];
+          buttonReplace.Text = _languageDicoEn["Replace"];
+
           _currentLanguage = "English";
           break;
         case "French":
@@ -447,7 +454,12 @@ namespace ReplaceStringInManyProject
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
-          labelPath.Text = _languageDicoEn["Path"] + Punctuation.OneSpace + Punctuation.Colon;
+          labelPath.Text = _languageDicoFr["Initial path"] + Punctuation.OneSpace + Punctuation.Colon;
+          labelFileToChange.Text = _languageDicoFr["File to change"] + Punctuation.OneSpace + Punctuation.Colon;
+          labelStringToSearch.Text = _languageDicoFr["String to search"] + Punctuation.OneSpace + Punctuation.Colon;
+          labelReplaceBy.Text = _languageDicoFr["Replace by"] + Punctuation.OneSpace + Punctuation.Colon;
+          buttonSearch.Text = _languageDicoFr["Search"];
+          buttonReplace.Text = _languageDicoFr["Replace"];
 
           _currentLanguage = "French";
           break;
@@ -459,7 +471,10 @@ namespace ReplaceStringInManyProject
 
     private void cutToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxInitialPath
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -469,7 +484,10 @@ namespace ReplaceStringInManyProject
 
     private void copyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxInitialPath
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -479,7 +497,10 @@ namespace ReplaceStringInManyProject
 
     private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxInitialPath
+      }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -489,7 +510,10 @@ namespace ReplaceStringInManyProject
 
     private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control>
+      {
+        textBoxInitialPath
+      }); 
       TextBox control = focusedControl as TextBox;
       if (control != null) control.SelectAll();
     }
@@ -652,7 +676,7 @@ namespace ReplaceStringInManyProject
 
     private void AdjustAllControls()
     {
-      AdjustControls(); // insert here all labels, textboxes and buttons, one method per line of controls
+      AdjustControls(labelPath, textBoxInitialPath, buttonPeekDirectory); 
     }
 
     private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -667,7 +691,52 @@ namespace ReplaceStringInManyProject
 
     private void buttonPeekDirectory_Click(object sender, EventArgs e)
     {
+      FolderBrowserDialog fbd = new FolderBrowserDialog();
+      if (fbd.ShowDialog() == DialogResult.OK)
+      {
+        textBoxInitialPath.Text = fbd.SelectedPath;
+      }
+    }
 
+    private void textBoxInitialPath_TextChanged(object sender, EventArgs e)
+    {
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+    }
+
+    private static void SetButtonEnabled(Button button, params TextBox[] textBoxes)
+    {
+      bool result = false;
+      foreach (TextBox box in textBoxes.Where(box => box.Text.Length != 0))
+      {
+        result = true;
+      }
+
+      button.Enabled = result;
+    }
+
+    private void textBoxfileToChange_TextChanged(object sender, EventArgs e)
+    {
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+    }
+
+    private void textBoxStringToSearch_TextChanged(object sender, EventArgs e)
+    {
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+    }
+
+    private void textBoxReplaceBy_TextChanged(object sender, EventArgs e)
+    {
+      //SetButtonEnabled(buttonSearch, textBoxInitialPath);
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+    }
+
+    private void listViewResult_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      buttonReplace.Enabled = listViewResult.Items.Count != 0;
     }
   }
 }

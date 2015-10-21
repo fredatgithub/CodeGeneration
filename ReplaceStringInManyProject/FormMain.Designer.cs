@@ -68,6 +68,16 @@
       this.buttonPeekDirectory = new System.Windows.Forms.Button();
       this.labelPath = new System.Windows.Forms.Label();
       this.textBoxInitialPath = new System.Windows.Forms.TextBox();
+      this.textBoxfileToChange = new System.Windows.Forms.TextBox();
+      this.labelFileToChange = new System.Windows.Forms.Label();
+      this.buttonPeekFile = new System.Windows.Forms.Button();
+      this.textBoxStringToSearch = new System.Windows.Forms.TextBox();
+      this.labelStringToSearch = new System.Windows.Forms.Label();
+      this.textBoxReplaceBy = new System.Windows.Forms.TextBox();
+      this.labelReplaceBy = new System.Windows.Forms.Label();
+      this.buttonReplace = new System.Windows.Forms.Button();
+      this.listViewResult = new System.Windows.Forms.ListView();
+      this.buttonSearch = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -369,7 +379,7 @@
       // 
       // buttonPeekDirectory
       // 
-      this.buttonPeekDirectory.Location = new System.Drawing.Point(710, 70);
+      this.buttonPeekDirectory.Location = new System.Drawing.Point(840, 70);
       this.buttonPeekDirectory.Name = "buttonPeekDirectory";
       this.buttonPeekDirectory.Size = new System.Drawing.Size(34, 23);
       this.buttonPeekDirectory.TabIndex = 2;
@@ -380,24 +390,133 @@
       // labelPath
       // 
       this.labelPath.AutoSize = true;
+      this.labelPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelPath.Location = new System.Drawing.Point(29, 71);
       this.labelPath.Name = "labelPath";
-      this.labelPath.Size = new System.Drawing.Size(37, 17);
+      this.labelPath.Size = new System.Drawing.Size(90, 20);
       this.labelPath.TabIndex = 3;
-      this.labelPath.Text = "Path";
+      this.labelPath.Text = "Initial path:";
       // 
       // textBoxInitialPath
       // 
-      this.textBoxInitialPath.Location = new System.Drawing.Point(110, 71);
+      this.textBoxInitialPath.Location = new System.Drawing.Point(165, 71);
       this.textBoxInitialPath.Name = "textBoxInitialPath";
-      this.textBoxInitialPath.Size = new System.Drawing.Size(579, 22);
+      this.textBoxInitialPath.Size = new System.Drawing.Size(661, 22);
       this.textBoxInitialPath.TabIndex = 4;
+      this.textBoxInitialPath.TextChanged += new System.EventHandler(this.textBoxInitialPath_TextChanged);
+      // 
+      // textBoxfileToChange
+      // 
+      this.textBoxfileToChange.Location = new System.Drawing.Point(165, 118);
+      this.textBoxfileToChange.Name = "textBoxfileToChange";
+      this.textBoxfileToChange.Size = new System.Drawing.Size(661, 22);
+      this.textBoxfileToChange.TabIndex = 7;
+      this.textBoxfileToChange.TextChanged += new System.EventHandler(this.textBoxfileToChange_TextChanged);
+      // 
+      // labelFileToChange
+      // 
+      this.labelFileToChange.AutoSize = true;
+      this.labelFileToChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelFileToChange.Location = new System.Drawing.Point(29, 118);
+      this.labelFileToChange.Name = "labelFileToChange";
+      this.labelFileToChange.Size = new System.Drawing.Size(119, 20);
+      this.labelFileToChange.TabIndex = 6;
+      this.labelFileToChange.Text = "File to change:";
+      // 
+      // buttonPeekFile
+      // 
+      this.buttonPeekFile.Location = new System.Drawing.Point(840, 117);
+      this.buttonPeekFile.Name = "buttonPeekFile";
+      this.buttonPeekFile.Size = new System.Drawing.Size(34, 23);
+      this.buttonPeekFile.TabIndex = 5;
+      this.buttonPeekFile.Text = "...";
+      this.buttonPeekFile.UseVisualStyleBackColor = true;
+      // 
+      // textBoxStringToSearch
+      // 
+      this.textBoxStringToSearch.Location = new System.Drawing.Point(165, 167);
+      this.textBoxStringToSearch.Name = "textBoxStringToSearch";
+      this.textBoxStringToSearch.Size = new System.Drawing.Size(661, 22);
+      this.textBoxStringToSearch.TabIndex = 10;
+      this.textBoxStringToSearch.Text = "200";
+      this.textBoxStringToSearch.TextChanged += new System.EventHandler(this.textBoxStringToSearch_TextChanged);
+      // 
+      // labelStringToSearch
+      // 
+      this.labelStringToSearch.AutoSize = true;
+      this.labelStringToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelStringToSearch.Location = new System.Drawing.Point(29, 167);
+      this.labelStringToSearch.Name = "labelStringToSearch";
+      this.labelStringToSearch.Size = new System.Drawing.Size(133, 20);
+      this.labelStringToSearch.TabIndex = 9;
+      this.labelStringToSearch.Text = "String to search:";
+      // 
+      // textBoxReplaceBy
+      // 
+      this.textBoxReplaceBy.Location = new System.Drawing.Point(165, 215);
+      this.textBoxReplaceBy.Name = "textBoxReplaceBy";
+      this.textBoxReplaceBy.Size = new System.Drawing.Size(661, 22);
+      this.textBoxReplaceBy.TabIndex = 13;
+      this.textBoxReplaceBy.Text = "1024";
+      this.textBoxReplaceBy.TextChanged += new System.EventHandler(this.textBoxReplaceBy_TextChanged);
+      // 
+      // labelReplaceBy
+      // 
+      this.labelReplaceBy.AutoSize = true;
+      this.labelReplaceBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelReplaceBy.Location = new System.Drawing.Point(29, 215);
+      this.labelReplaceBy.Name = "labelReplaceBy";
+      this.labelReplaceBy.Size = new System.Drawing.Size(97, 20);
+      this.labelReplaceBy.TabIndex = 12;
+      this.labelReplaceBy.Text = "Replace by:";
+      // 
+      // buttonReplace
+      // 
+      this.buttonReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonReplace.Location = new System.Drawing.Point(136, 253);
+      this.buttonReplace.Name = "buttonReplace";
+      this.buttonReplace.Size = new System.Drawing.Size(80, 29);
+      this.buttonReplace.TabIndex = 14;
+      this.buttonReplace.Text = "Replace";
+      this.buttonReplace.UseVisualStyleBackColor = true;
+      // 
+      // listViewResult
+      // 
+      this.listViewResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.listViewResult.Location = new System.Drawing.Point(32, 300);
+      this.listViewResult.Name = "listViewResult";
+      this.listViewResult.Size = new System.Drawing.Size(850, 203);
+      this.listViewResult.TabIndex = 15;
+      this.listViewResult.UseCompatibleStateImageBehavior = false;
+      this.listViewResult.SelectedIndexChanged += new System.EventHandler(this.listViewResult_SelectedIndexChanged);
+      // 
+      // buttonSearch
+      // 
+      this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonSearch.Location = new System.Drawing.Point(32, 253);
+      this.buttonSearch.Name = "buttonSearch";
+      this.buttonSearch.Size = new System.Drawing.Size(80, 29);
+      this.buttonSearch.TabIndex = 16;
+      this.buttonSearch.Text = "Search";
+      this.buttonSearch.UseVisualStyleBackColor = true;
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
+      this.Controls.Add(this.buttonSearch);
+      this.Controls.Add(this.listViewResult);
+      this.Controls.Add(this.buttonReplace);
+      this.Controls.Add(this.textBoxReplaceBy);
+      this.Controls.Add(this.labelReplaceBy);
+      this.Controls.Add(this.textBoxStringToSearch);
+      this.Controls.Add(this.labelStringToSearch);
+      this.Controls.Add(this.textBoxfileToChange);
+      this.Controls.Add(this.labelFileToChange);
+      this.Controls.Add(this.buttonPeekFile);
       this.Controls.Add(this.textBoxInitialPath);
       this.Controls.Add(this.labelPath);
       this.Controls.Add(this.buttonPeekDirectory);
@@ -458,5 +577,15 @@
     private System.Windows.Forms.Button buttonPeekDirectory;
     private System.Windows.Forms.Label labelPath;
     private System.Windows.Forms.TextBox textBoxInitialPath;
+    private System.Windows.Forms.TextBox textBoxfileToChange;
+    private System.Windows.Forms.Label labelFileToChange;
+    private System.Windows.Forms.Button buttonPeekFile;
+    private System.Windows.Forms.TextBox textBoxStringToSearch;
+    private System.Windows.Forms.Label labelStringToSearch;
+    private System.Windows.Forms.TextBox textBoxReplaceBy;
+    private System.Windows.Forms.Label labelReplaceBy;
+    private System.Windows.Forms.Button buttonReplace;
+    private System.Windows.Forms.ListView listViewResult;
+    private System.Windows.Forms.Button buttonSearch;
   }
 }

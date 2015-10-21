@@ -1430,4 +1430,9 @@
     <englishValue>Number of quote</englishValue>
     <frenchValue>Nombre de citation</frenchValue>
   </term>
+  <term>
+    <name>Path</name>
+    <englishValue>Path</englishValue>
+    <frenchValue>Chemin</frenchValue>
+  </term>
 </terms>
