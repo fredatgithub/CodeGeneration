@@ -703,11 +703,8 @@ namespace ReplaceStringInManyProject
 
     private void textBoxInitialPath_TextChanged(object sender, EventArgs e)
     {
-      if (textBoxInitialPath.Text == string.Empty)
-      {
-        buttonSearch.Enabled = false;
-        buttonReplace.Enabled = false;
-      }
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
     }
 
     private static void SetButtonEnabled(Button button, params TextBox[] textBoxes)
@@ -723,29 +720,20 @@ namespace ReplaceStringInManyProject
 
     private void textBoxfileToChange_TextChanged(object sender, EventArgs e)
     {
-      if (textBoxfileToChange.Text == string.Empty)
-      {
-        buttonSearch.Enabled = false;
-        buttonReplace.Enabled = false;
-      }
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
     }
 
     private void textBoxStringToSearch_TextChanged(object sender, EventArgs e)
     {
-      if (textBoxStringToSearch.Text == string.Empty)
-      {
-        buttonSearch.Enabled = false;
-        buttonReplace.Enabled = false;
-      }
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
     }
 
     private void textBoxReplaceBy_TextChanged(object sender, EventArgs e)
     {
-      if (textBoxReplaceBy.Text == string.Empty)
-      {
-        buttonSearch.Enabled = false;
-        buttonReplace.Enabled = false;
-      }
+      SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
     }
 
     private void listViewResult_SelectedIndexChanged(object sender, EventArgs e)
