@@ -73,6 +73,7 @@ namespace ReplaceStringInManyProject
       SetLanguage(Settings.Default.LastLanguageUsed);
       SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, listViewResult);
     }
 
     private void LoadConfigurationOptions()
@@ -473,7 +474,7 @@ namespace ReplaceStringInManyProject
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxInitialPath
+        textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -486,7 +487,7 @@ namespace ReplaceStringInManyProject
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxInitialPath
+        textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -499,7 +500,7 @@ namespace ReplaceStringInManyProject
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxInitialPath
+        textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
       }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
@@ -512,7 +513,7 @@ namespace ReplaceStringInManyProject
     {
       Control focusedControl = FindFocusedControl(new List<Control>
       {
-        textBoxInitialPath
+        textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
       }); 
       TextBox control = focusedControl as TextBox;
       if (control != null) control.SelectAll();
@@ -718,27 +719,45 @@ namespace ReplaceStringInManyProject
       button.Enabled = result;
     }
 
+    private static void SetButtonEnabled(Button button, params ListView[] listViews)
+    {
+      bool result = true;
+      foreach (ListView view in listViews.Where(view => view.Items.Count == 0))
+      {
+        result = false;
+      }
+
+      button.Enabled = result;
+    }
+
     private void textBoxfileToChange_TextChanged(object sender, EventArgs e)
     {
       SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, listViewResult);
     }
 
     private void textBoxStringToSearch_TextChanged(object sender, EventArgs e)
     {
       SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, listViewResult);
     }
 
     private void textBoxReplaceBy_TextChanged(object sender, EventArgs e)
     {
       SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
+      SetButtonEnabled(buttonReplace, listViewResult);
     }
 
-    private void listViewResult_SelectedIndexChanged(object sender, EventArgs e)
+    private void buttonPeekFile_Click(object sender, EventArgs e)
     {
-      buttonReplace.Enabled = listViewResult.Items.Count != 0;
+      OpenFileDialog fd = new OpenFileDialog();
+      if (fd.ShowDialog() == DialogResult.OK)
+      {
+        textBoxfileToChange.Text = fd.SafeFileName;
+      }
     }
   }
 }

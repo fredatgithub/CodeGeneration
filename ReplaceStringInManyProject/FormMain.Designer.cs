@@ -1,4 +1,6 @@
-﻿namespace ReplaceStringInManyProject
+﻿using System.Windows.Forms;
+
+namespace ReplaceStringInManyProject
 {
   partial class FormMain
   {
@@ -431,6 +433,7 @@
       this.buttonPeekFile.TabIndex = 5;
       this.buttonPeekFile.Text = "...";
       this.buttonPeekFile.UseVisualStyleBackColor = true;
+      this.buttonPeekFile.Click += new System.EventHandler(this.buttonPeekFile_Click);
       // 
       // textBoxStringToSearch
       // 
@@ -490,7 +493,6 @@
       this.listViewResult.Size = new System.Drawing.Size(850, 203);
       this.listViewResult.TabIndex = 15;
       this.listViewResult.UseCompatibleStateImageBehavior = false;
-      this.listViewResult.SelectedIndexChanged += new System.EventHandler(this.listViewResult_SelectedIndexChanged);
       // 
       // buttonSearch
       // 
