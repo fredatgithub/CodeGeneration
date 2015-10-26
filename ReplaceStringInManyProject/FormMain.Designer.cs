@@ -482,6 +482,7 @@ namespace ReplaceStringInManyProject
       this.buttonReplace.TabIndex = 14;
       this.buttonReplace.Text = "Replace";
       this.buttonReplace.UseVisualStyleBackColor = true;
+      this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
       // 
       // listViewResult
       // 

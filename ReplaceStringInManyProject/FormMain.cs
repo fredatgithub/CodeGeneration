@@ -769,6 +769,15 @@ namespace ReplaceStringInManyProject
     private void buttonSearch_Click(object sender, EventArgs e)
     {
       listViewResult.Items.Clear();
+      foreach (string file in Directory.EnumerateFiles(textBoxInitialPath.Text, textBoxfileToChange.Text,
+        SearchOption.AllDirectories))
+      {
+        
+      }
+    }
+
+    private void buttonReplace_Click(object sender, EventArgs e)
+    {
 
     }
   }
