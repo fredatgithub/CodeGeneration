@@ -80,6 +80,7 @@ namespace ReplaceStringInManyProject
       this.buttonReplace = new System.Windows.Forms.Button();
       this.listViewResult = new System.Windows.Forms.ListView();
       this.buttonSearch = new System.Windows.Forms.Button();
+      this.buttonViewFile = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -506,11 +507,23 @@ namespace ReplaceStringInManyProject
       this.buttonSearch.UseVisualStyleBackColor = true;
       this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
       // 
+      // buttonViewFile
+      // 
+      this.buttonViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonViewFile.Location = new System.Drawing.Point(283, 253);
+      this.buttonViewFile.Name = "buttonViewFile";
+      this.buttonViewFile.Size = new System.Drawing.Size(99, 29);
+      this.buttonViewFile.TabIndex = 17;
+      this.buttonViewFile.Text = "View";
+      this.buttonViewFile.UseVisualStyleBackColor = true;
+      this.buttonViewFile.Click += new System.EventHandler(this.buttonViewFile_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(911, 534);
+      this.Controls.Add(this.buttonViewFile);
       this.Controls.Add(this.buttonSearch);
       this.Controls.Add(this.listViewResult);
       this.Controls.Add(this.buttonReplace);
@@ -591,5 +604,6 @@ namespace ReplaceStringInManyProject
     private System.Windows.Forms.Button buttonReplace;
     private System.Windows.Forms.ListView listViewResult;
     private System.Windows.Forms.Button buttonSearch;
+    private Button buttonViewFile;
   }
 }

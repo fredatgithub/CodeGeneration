@@ -1460,4 +1460,9 @@
     <englishValue>Replace</englishValue>
     <frenchValue>Remplacer</frenchValue>
   </term>
+  <term>
+    <name>The list doesn't have any item</name>
+    <englishValue>The list doesn't have any item</englishValue>
+    <frenchValue>La liste n'a pas d'élément</frenchValue>
+  </term>
 </terms>

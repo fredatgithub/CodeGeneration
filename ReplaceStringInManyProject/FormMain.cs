@@ -769,16 +769,85 @@ namespace ReplaceStringInManyProject
     private void buttonSearch_Click(object sender, EventArgs e)
     {
       listViewResult.Items.Clear();
-      foreach (string file in Directory.EnumerateFiles(textBoxInitialPath.Text, textBoxfileToChange.Text,
-        SearchOption.AllDirectories))
+      listViewResult.Columns.Add("To be updated", 240, HorizontalAlignment.Left);
+      listViewResult.Columns.Add("Solution Name", 240, HorizontalAlignment.Left);
+      listViewResult.Columns.Add("Solution Path", 640, HorizontalAlignment.Left);
+
+      listViewResult.View = View.Details;
+      listViewResult.LabelEdit = false;
+      listViewResult.AllowColumnReorder = true;
+      listViewResult.CheckBoxes = true;
+      listViewResult.FullRowSelect = true;
+      listViewResult.GridLines = true;
+      listViewResult.Sorting = SortOrder.None;
+      int resultFound = 0;
+      foreach (var directory in Directory.EnumerateDirectories(textBoxInitialPath.Text))
       {
-        
+        var filteredFiles = Directory.GetFiles(directory, textBoxfileToChange.Text).ToList();
+        foreach (var file in filteredFiles)
+        {
+          var tmpSolPath = GetDirectoryFileNameAndExtension(file)[0];
+          var tmpSolNameOnly0 = GetDirectoryFileNameAndExtension(file)[0];
+          var tmpSolNameOnly = tmpSolNameOnly0.Substring(tmpSolNameOnly0.LastIndexOf('\\') + 1);
+          ListViewItem item1 = new ListViewItem(textBoxfileToChange.Text) { Checked = false };
+          item1.SubItems.Add(tmpSolNameOnly);
+          item1.SubItems.Add(tmpSolPath);
+          if (!IsInlistView(listViewResult, item1, 2))
+          {
+            listViewResult.Items.Add(item1);
+            resultFound++;
+            Application.DoEvents();
+          }
+        }
       }
+
+      buttonReplace.Enabled = listViewResult.Items.Count != 0;
+    }
+
+    private static string[] GetDirectoryFileNameAndExtension(string filePath)
+    {
+      string directory = Path.GetDirectoryName(filePath);
+      string fileName = Path.GetFileNameWithoutExtension(filePath);
+      string extension = Path.GetExtension(filePath);
+
+      return new[] { directory, fileName, extension };
+    }
+
+    private static bool IsInlistView(ListView listView, ListViewItem lviItem, int columnNumber)
+    {
+      bool result = false;
+      foreach (ListViewItem item in listView.Items)
+      {
+        if (item.SubItems[columnNumber].Text == lviItem.SubItems[columnNumber].Text)
+        {
+          result = true;
+          break;
+        }
+      }
+
+      return result;
     }
 
     private void buttonReplace_Click(object sender, EventArgs e)
     {
+      if (listViewResult.Items.Count == 0)
+      {
+        DisplayMessage(Translate("The list doesn't have any item") +
+                         Punctuation.Period, Translate("List empty"), MessageBoxButtons.OK);
+       return;
+      }
+    }
 
+    private void buttonViewFile_Click(object sender, EventArgs e)
+    {
+      if (listViewResult.Items.Count == 0)
+      {
+        DisplayMessage(Translate("The list doesn't have any item to view") +
+                         Punctuation.Period + Punctuation.CrLf +
+                         Translate("Check off some items"),
+          Translate("No selected item"), MessageBoxButtons.OK);
+        return;
+      }
     }
   }
 }
