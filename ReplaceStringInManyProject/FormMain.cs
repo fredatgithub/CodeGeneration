@@ -298,6 +298,9 @@ namespace ReplaceStringInManyProject
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       textBoxInitialPath.Text = Settings.Default.textBoxInitialPath;
+      textBoxfileToChange.Text = Settings.Default.textBoxfileToChange;
+      textBoxStringToSearch.Text = Settings.Default.textBoxStringToSearch;
+      textBoxReplaceBy.Text = Settings.Default.textBoxReplaceBy;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       LoadConfigurationOptions();
     }
@@ -311,6 +314,9 @@ namespace ReplaceStringInManyProject
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.textBoxInitialPath = textBoxInitialPath.Text;
+      Settings.Default.textBoxfileToChange = textBoxfileToChange.Text;
+      Settings.Default.textBoxStringToSearch = textBoxStringToSearch.Text;
+      Settings.Default.textBoxReplaceBy = textBoxReplaceBy.Text;
       SaveConfigurationOptions();
       Settings.Default.Save();
     }
@@ -758,6 +764,12 @@ namespace ReplaceStringInManyProject
       {
         textBoxfileToChange.Text = fd.SafeFileName;
       }
+    }
+
+    private void buttonSearch_Click(object sender, EventArgs e)
+    {
+      listViewResult.Items.Clear();
+
     }
   }
 }
