@@ -74,6 +74,7 @@ namespace ReplaceStringInManyProject
       SetButtonEnabled(buttonSearch, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy);
       SetButtonEnabled(buttonReplace, listViewResult);
+      SetButtonEnabled(buttonViewFile, listViewResult);
     }
 
     private void LoadConfigurationOptions()
@@ -769,10 +770,10 @@ namespace ReplaceStringInManyProject
     private void buttonSearch_Click(object sender, EventArgs e)
     {
       listViewResult.Items.Clear();
-      listViewResult.Columns.Add("To be updated", 240, HorizontalAlignment.Left);
+      listViewResult.Columns.Add("To be updated",
+        StringMax("To be updated", textBoxfileToChange.Text, "To be updated".Length * 8), HorizontalAlignment.Left); // was 110
       listViewResult.Columns.Add("Solution Name", 240, HorizontalAlignment.Left);
       listViewResult.Columns.Add("Solution Path", 640, HorizontalAlignment.Left);
-
       listViewResult.View = View.Details;
       listViewResult.LabelEdit = false;
       listViewResult.AllowColumnReorder = true;
@@ -801,7 +802,30 @@ namespace ReplaceStringInManyProject
         }
       }
 
+      listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
       buttonReplace.Enabled = listViewResult.Items.Count != 0;
+    }
+
+    private static void AdjustListViewColumnWidth(ListView lv, int numberOfColumn)
+    {
+      if (lv.Items.Count == 0)
+      {
+        return;
+      }
+
+      int[] columnWidth = new int[numberOfColumn];
+      for (int i = 0; i < numberOfColumn; i++)
+      {
+        columnWidth[i] = lv.Items[0].SubItems[i].Text.Length;
+      }
+
+      for (int i = 0; i < lv.Items.Count; i++)
+      {
+        for (int j = 0; j < lv.Items[i].SubItems.Count; j++)
+        {
+          columnWidth[j] = Math.Max(lv.Items[i].SubItems[j].Text.Length, columnWidth[0]);
+        }
+      }
     }
 
     private static string[] GetDirectoryFileNameAndExtension(string filePath)
@@ -848,6 +872,36 @@ namespace ReplaceStringInManyProject
           Translate("No selected item"), MessageBoxButtons.OK);
         return;
       }
+    }
+
+    private void listViewResult_ItemChecked(object sender, ItemCheckedEventArgs e)
+    {
+      buttonViewFile.Enabled = GetItemChecked(listViewResult) > 0;
+    }
+
+    private static int GetItemChecked(ListView lv)
+    {
+      return lv.CheckedItems.Count;
+    }
+
+    private int StringMax(string s1, string s2, int minimum = 1)
+    {
+      if (s1.Length == s2.Length)
+      {
+        return s1.Length < minimum ? minimum : s1.Length;
+      }
+
+      if (s1.Length > s2.Length)
+      {
+        return s1.Length < minimum ? minimum : s1.Length;
+      }
+
+      if (s1.Length < s2.Length)
+      {
+        return s2.Length < minimum ? minimum : s2.Length;
+      }
+
+      return minimum;
     }
   }
 }

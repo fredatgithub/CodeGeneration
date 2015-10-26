@@ -495,6 +495,7 @@ namespace ReplaceStringInManyProject
       this.listViewResult.Size = new System.Drawing.Size(850, 203);
       this.listViewResult.TabIndex = 15;
       this.listViewResult.UseCompatibleStateImageBehavior = false;
+      this.listViewResult.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listViewResult_ItemChecked);
       // 
       // buttonSearch
       // 
@@ -509,6 +510,7 @@ namespace ReplaceStringInManyProject
       // 
       // buttonViewFile
       // 
+      this.buttonViewFile.Enabled = false;
       this.buttonViewFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonViewFile.Location = new System.Drawing.Point(283, 253);
       this.buttonViewFile.Name = "buttonViewFile";
