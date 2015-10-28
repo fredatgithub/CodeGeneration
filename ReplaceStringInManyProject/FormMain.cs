@@ -872,6 +872,18 @@ namespace ReplaceStringInManyProject
           Translate("No selected item"), MessageBoxButtons.OK);
         return;
       }
+
+      var selectedFiles = listViewResult.SelectedItems;
+      foreach (ListViewItem file in selectedFiles)
+      {
+        StartProcess(file.SubItems[3].ToString());
+      }
+      
+    }
+
+    private static void StartProcess(string fileName)
+    {
+      Process.Start("notepad.exe " + fileName);
     }
 
     private void listViewResult_ItemChecked(object sender, ItemCheckedEventArgs e)
