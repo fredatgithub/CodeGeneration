@@ -892,18 +892,18 @@ namespace ReplaceStringInManyProject
         return;
       }
 
-
+      int counter = 0;
       foreach (ListViewItem item in listViewResult.CheckedItems)
       {
-        int counter = 0;
         if (FileReplace(AddSlash(item.SubItems[2].Text) + item.SubItems[0].Text, 
           textBoxStringToSearch.Text, textBoxReplaceBy.Text))
         {
           counter++;
         }
-
-        DisplayMessage(counter + Punctuation.OneSpace + Translate("file"), Translate("File modified"), MessageBoxButtons.OK  );
       }
+
+      DisplayMessage(counter + Punctuation.OneSpace + Translate("file") +
+         Punctuation.OneSpace + "has been modified", Translate("File modified"), MessageBoxButtons.OK);
     }
 
     private void buttonViewFile_Click(object sender, EventArgs e)
