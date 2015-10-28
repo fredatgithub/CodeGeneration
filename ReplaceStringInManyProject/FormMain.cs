@@ -95,7 +95,7 @@ namespace ReplaceStringInManyProject
       {
         CreateLanguageFile();
       }
-      
+
       XDocument xDoc;
       try
       {
@@ -139,7 +139,7 @@ namespace ReplaceStringInManyProject
         }
         else
         {
-          MessageBox.Show("Your xml file: "+ Settings.Default.LanguageFileName +
+          MessageBox.Show("Your xml file: " + Settings.Default.LanguageFileName +
             " has duplicate like: " + i.name);
         }
       }
@@ -427,7 +427,7 @@ namespace ReplaceStringInManyProject
           buttonSearch.Text = _languageDicoEn["Search"];
           buttonReplace.Text = _languageDicoEn["Replace"];
           buttonViewFile.Text = _languageDicoEn["View"];
-          
+
           _currentLanguage = "English";
           break;
         case "French":
@@ -483,7 +483,7 @@ namespace ReplaceStringInManyProject
       Control focusedControl = FindFocusedControl(new List<Control>
       {
         textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
-      }); 
+      });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -496,7 +496,7 @@ namespace ReplaceStringInManyProject
       Control focusedControl = FindFocusedControl(new List<Control>
       {
         textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
-      }); 
+      });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -509,7 +509,7 @@ namespace ReplaceStringInManyProject
       Control focusedControl = FindFocusedControl(new List<Control>
       {
         textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
-      }); 
+      });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -522,7 +522,7 @@ namespace ReplaceStringInManyProject
       Control focusedControl = FindFocusedControl(new List<Control>
       {
         textBoxInitialPath, textBoxfileToChange, textBoxStringToSearch, textBoxReplaceBy
-      }); 
+      });
       TextBox control = focusedControl as TextBox;
       if (control != null) control.SelectAll();
     }
@@ -788,23 +788,53 @@ namespace ReplaceStringInManyProject
         var filteredFiles = Directory.GetFiles(directory, textBoxfileToChange.Text).ToList();
         foreach (var file in filteredFiles)
         {
+          // filtering files containing string to search
+          if (!FileContains(file, textBoxStringToSearch.Text)) continue;
           var tmpSolPath = GetDirectoryFileNameAndExtension(file)[0];
           var tmpSolNameOnly0 = GetDirectoryFileNameAndExtension(file)[0];
           var tmpSolNameOnly = tmpSolNameOnly0.Substring(tmpSolNameOnly0.LastIndexOf('\\') + 1);
           ListViewItem item1 = new ListViewItem(textBoxfileToChange.Text) { Checked = false };
           item1.SubItems.Add(tmpSolNameOnly);
           item1.SubItems.Add(tmpSolPath);
-          if (!IsInlistView(listViewResult, item1, 2))
-          {
-            listViewResult.Items.Add(item1);
-            resultFound++;
-            Application.DoEvents();
-          }
+          if (IsInlistView(listViewResult, item1, 2)) continue;
+          listViewResult.Items.Add(item1);
+          resultFound++;
+          Application.DoEvents();
         }
       }
 
       listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
       buttonReplace.Enabled = listViewResult.Items.Count != 0;
+    }
+
+    private static bool FileContains(string fileName, string textToSearch)
+    {
+      if (!File.Exists(fileName)) return false;
+      try
+      {
+        StreamReader sr = new StreamReader(fileName);
+        var fileContent = sr.ReadToEnd();
+        sr.Close();
+        return fileContent.Contains(textToSearch);
+      }
+      catch (Exception) { return false; }
+    }
+
+    private static bool FileReplace(string fileName, string textToSearch, string textToReplace)
+    {
+      if (!File.Exists(fileName)) return false;
+      try
+      {
+        var sr = new StreamReader(fileName);
+        var fileContent = sr.ReadToEnd();
+        sr.Close();
+        fileContent.Replace(textToSearch, textToReplace);
+        var sw = new StreamWriter(fileName);
+        sw.Write(fileContent);
+        sw.Close();
+        return true;
+      }
+      catch (Exception) { return false; }
     }
 
     private static void AdjustListViewColumnWidth(ListView lv, int numberOfColumn)
@@ -859,7 +889,20 @@ namespace ReplaceStringInManyProject
       {
         DisplayMessage(Translate("The list doesn't have any item") +
                          Punctuation.Period, Translate("List empty"), MessageBoxButtons.OK);
-       return;
+        return;
+      }
+
+
+      foreach (ListViewItem item in listViewResult.CheckedItems)
+      {
+        int counter = 0;
+        if (FileReplace(AddSlash(item.SubItems[2].Text) + item.SubItems[0].Text, 
+          textBoxStringToSearch.Text, textBoxReplaceBy.Text))
+        {
+          counter++;
+        }
+
+        DisplayMessage(counter + Punctuation.OneSpace + Translate("file"), Translate("File modified"), MessageBoxButtons.OK  );
       }
     }
 
@@ -902,7 +945,7 @@ namespace ReplaceStringInManyProject
       }
       else
       {
-        MessageBox.Show(Translate("The file") + Punctuation.CrLf + fileName + 
+        MessageBox.Show(Translate("The file") + Punctuation.CrLf + fileName +
           Punctuation.CrLf + Translate("doesn't exist"));
       }
     }
