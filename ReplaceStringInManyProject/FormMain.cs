@@ -426,7 +426,8 @@ namespace ReplaceStringInManyProject
           labelReplaceBy.Text = _languageDicoEn["Replace by"] + Punctuation.Colon;
           buttonSearch.Text = _languageDicoEn["Search"];
           buttonReplace.Text = _languageDicoEn["Replace"];
-
+          buttonViewFile.Text = _languageDicoEn["View"];
+          
           _currentLanguage = "English";
           break;
         case "French":
@@ -468,7 +469,7 @@ namespace ReplaceStringInManyProject
           labelReplaceBy.Text = _languageDicoFr["Replace by"] + Punctuation.OneSpace + Punctuation.Colon;
           buttonSearch.Text = _languageDicoFr["Search"];
           buttonReplace.Text = _languageDicoFr["Replace"];
-
+          buttonViewFile.Text = _languageDicoFr["View"];
           _currentLanguage = "French";
           break;
         default:
@@ -531,16 +532,16 @@ namespace ReplaceStringInManyProject
       if (tb != ActiveControl) return;
       if (tb.Text == string.Empty)
       {
-        DisplayMessage(Translate("ThereIs") + Punctuation.OneSpace +
+        DisplayMessage(Translate("There is") + Punctuation.OneSpace +
           Translate(errorMessage) + Punctuation.OneSpace +
-          Translate("ToCut") + Punctuation.OneSpace, Translate(errorMessage),
+          Translate("to cut") + Punctuation.OneSpace, Translate(errorMessage),
           MessageBoxButtons.OK);
         return;
       }
 
       if (tb.SelectedText == string.Empty)
       {
-        DisplayMessage(Translate("NoTextHasBeenSelected"),
+        DisplayMessage(Translate("No text has been selected"),
           Translate(errorMessage), MessageBoxButtons.OK);
         return;
       }
@@ -554,14 +555,14 @@ namespace ReplaceStringInManyProject
       if (tb != ActiveControl) return;
       if (tb.Text == string.Empty)
       {
-        DisplayMessage(Translate("ThereIsNothingToCopy") + Punctuation.OneSpace,
+        DisplayMessage(Translate("There is nothing to copy") + Punctuation.OneSpace,
           Translate(message), MessageBoxButtons.OK);
         return;
       }
 
       if (tb.SelectedText == string.Empty)
       {
-        DisplayMessage(Translate("NoTextHasBeenSelected"),
+        DisplayMessage(Translate("No text has been selected"),
           Translate(message), MessageBoxButtons.OK);
         return;
       }
@@ -771,7 +772,7 @@ namespace ReplaceStringInManyProject
     {
       listViewResult.Items.Clear();
       listViewResult.Columns.Add("To be updated",
-        StringMax("To be updated", textBoxfileToChange.Text, "To be updated".Length * 8), HorizontalAlignment.Left); // was 110
+        StringMax("To be updated", textBoxfileToChange.Text, "To be updated".Length * 8), HorizontalAlignment.Left);
       listViewResult.Columns.Add("Solution Name", 240, HorizontalAlignment.Left);
       listViewResult.Columns.Add("Solution Path", 640, HorizontalAlignment.Left);
       listViewResult.View = View.Details;
@@ -873,17 +874,37 @@ namespace ReplaceStringInManyProject
         return;
       }
 
-      var selectedFiles = listViewResult.SelectedItems;
-      foreach (ListViewItem file in selectedFiles)
+      var checkedFiles = listViewResult.CheckedItems;
+      foreach (ListViewItem item in checkedFiles)
       {
-        StartProcess(file.SubItems[3].ToString());
+        StartProcess(AddSlash(item.SubItems[2].Text) + item.SubItems[0].Text);
       }
-      
     }
 
-    private static void StartProcess(string fileName)
+    private static string AddSlash(string myString)
     {
-      Process.Start("notepad.exe " + fileName);
+      return myString.EndsWith("\\") ? myString : myString + "\\";
+    }
+
+    private void StartProcess(string fileName, string application = "notepad.exe")
+    {
+      if (File.Exists(fileName))
+      {
+        Process process = new Process
+        {
+          StartInfo =
+          {
+            FileName = application,
+            Arguments = fileName
+          }
+        };
+        process.Start();
+      }
+      else
+      {
+        MessageBox.Show(Translate("The file") + Punctuation.CrLf + fileName + 
+          Punctuation.CrLf + Translate("doesn't exist"));
+      }
     }
 
     private void listViewResult_ItemChecked(object sender, ItemCheckedEventArgs e)
