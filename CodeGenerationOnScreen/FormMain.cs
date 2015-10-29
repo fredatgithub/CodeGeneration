@@ -279,6 +279,8 @@ namespace CodeGenerationOnScreen
       checkBoxKeepEmptyLines.Checked = Settings.Default.checkBoxKeepEmptyLines;
       checkBoxTrimWhiteSpace.Checked = Settings.Default.checkBoxTrimWhiteSpace;
       checkBoxDontDuplicateCharacters.Checked = Settings.Default.checkBoxDontDuplicateCharacters;
+      textBoxBeforeLine.Text = Settings.Default.textBoxBeforeLine;
+      textBoxAfterLine.Text = Settings.Default.textBoxAfterLine;
     }
 
     private void SaveWindowValue()
@@ -291,6 +293,8 @@ namespace CodeGenerationOnScreen
       Settings.Default.checkBoxKeepEmptyLines = checkBoxKeepEmptyLines.Checked;
       Settings.Default.checkBoxTrimWhiteSpace = checkBoxTrimWhiteSpace.Checked;
       Settings.Default.checkBoxDontDuplicateCharacters = checkBoxDontDuplicateCharacters.Checked;
+      Settings.Default.textBoxBeforeLine = textBoxBeforeLine.Text;
+      Settings.Default.textBoxAfterLine = textBoxAfterLine.Text;
       Settings.Default.Save();
     }
 
@@ -532,7 +536,6 @@ namespace CodeGenerationOnScreen
 
     private void ButtonConvertClick(object sender, EventArgs e)
     {
-      textBoxTarget.Text = string.Empty;
       if (textBoxSource.Text == string.Empty)
       {
         DisplayMessageOk(GetTranslatedString("The source text cannot be empty"),
@@ -540,6 +543,7 @@ namespace CodeGenerationOnScreen
         return;
       }
 
+      textBoxTarget.Text = string.Empty;
       string[] lines = textBoxSource.Text.Split(new[] { "\n", "\r\n" }, checkBoxKeepEmptyLines.Checked ? StringSplitOptions.None : StringSplitOptions.RemoveEmptyEntries);
       foreach (string line in lines)
       {
@@ -559,10 +563,7 @@ namespace CodeGenerationOnScreen
 
     private static string ToPascalCase(string s)
     {
-      if (s == string.Empty)
-      {
-        return string.Empty;
-      }
+      if (s == string.Empty) return string.Empty;
 
       return s.Substring(0, 1).ToUpper() + s.Substring(1).ToLower();
     }

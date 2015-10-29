@@ -341,8 +341,9 @@
       // 
       this.textBoxSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxSource.Location = new System.Drawing.Point(116, 85);
-      this.textBoxSource.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.textBoxSource.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
       this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -355,8 +356,9 @@
       this.textBoxTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.textBoxTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxTarget.Location = new System.Drawing.Point(116, 384);
-      this.textBoxTarget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.textBoxTarget.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxTarget.Multiline = true;
       this.textBoxTarget.Name = "textBoxTarget";
       this.textBoxTarget.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -365,66 +367,71 @@
       // 
       // textBoxBeforeLine
       // 
+      this.textBoxBeforeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxBeforeLine.Location = new System.Drawing.Point(116, 300);
-      this.textBoxBeforeLine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.textBoxBeforeLine.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxBeforeLine.Name = "textBoxBeforeLine";
-      this.textBoxBeforeLine.Size = new System.Drawing.Size(132, 22);
+      this.textBoxBeforeLine.Size = new System.Drawing.Size(270, 26);
       this.textBoxBeforeLine.TabIndex = 4;
       this.textBoxBeforeLine.Text = "\"";
       // 
       // textBoxAfterLine
       // 
-      this.textBoxAfterLine.Location = new System.Drawing.Point(395, 300);
-      this.textBoxAfterLine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.textBoxAfterLine.Location = new System.Drawing.Point(508, 300);
+      this.textBoxAfterLine.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxAfterLine.Name = "textBoxAfterLine";
-      this.textBoxAfterLine.Size = new System.Drawing.Size(132, 22);
+      this.textBoxAfterLine.Size = new System.Drawing.Size(316, 22);
       this.textBoxAfterLine.TabIndex = 5;
       this.textBoxAfterLine.Text = "\",";
       // 
       // labelSourceText
       // 
       this.labelSourceText.AutoSize = true;
+      this.labelSourceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelSourceText.Location = new System.Drawing.Point(12, 85);
       this.labelSourceText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labelSourceText.Name = "labelSourceText";
-      this.labelSourceText.Size = new System.Drawing.Size(79, 17);
+      this.labelSourceText.Size = new System.Drawing.Size(94, 20);
       this.labelSourceText.TabIndex = 6;
       this.labelSourceText.Text = "Source text";
       // 
       // labelTargetText
       // 
       this.labelTargetText.AutoSize = true;
+      this.labelTargetText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelTargetText.Location = new System.Drawing.Point(12, 388);
       this.labelTargetText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labelTargetText.Name = "labelTargetText";
-      this.labelTargetText.Size = new System.Drawing.Size(76, 17);
+      this.labelTargetText.Size = new System.Drawing.Size(89, 20);
       this.labelTargetText.TabIndex = 7;
       this.labelTargetText.Text = "Target text";
       // 
       // labelBeforeLine
       // 
       this.labelBeforeLine.AutoSize = true;
+      this.labelBeforeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelBeforeLine.Location = new System.Drawing.Point(12, 300);
       this.labelBeforeLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labelBeforeLine.Name = "labelBeforeLine";
-      this.labelBeforeLine.Size = new System.Drawing.Size(76, 17);
+      this.labelBeforeLine.Size = new System.Drawing.Size(90, 20);
       this.labelBeforeLine.TabIndex = 8;
       this.labelBeforeLine.Text = "Before line";
       // 
       // labelAfterLine
       // 
       this.labelAfterLine.AutoSize = true;
-      this.labelAfterLine.Location = new System.Drawing.Point(281, 304);
+      this.labelAfterLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelAfterLine.Location = new System.Drawing.Point(394, 304);
       this.labelAfterLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labelAfterLine.Name = "labelAfterLine";
-      this.labelAfterLine.Size = new System.Drawing.Size(64, 17);
+      this.labelAfterLine.Size = new System.Drawing.Size(76, 20);
       this.labelAfterLine.TabIndex = 9;
       this.labelAfterLine.Text = "After line";
       // 
       // buttonConvert
       // 
-      this.buttonConvert.Location = new System.Drawing.Point(609, 298);
-      this.buttonConvert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.buttonConvert.Location = new System.Drawing.Point(832, 298);
+      this.buttonConvert.Margin = new System.Windows.Forms.Padding(4);
       this.buttonConvert.Name = "buttonConvert";
       this.buttonConvert.Size = new System.Drawing.Size(100, 28);
       this.buttonConvert.TabIndex = 10;
@@ -435,10 +442,11 @@
       // checkBoxKeepEmptyLines
       // 
       this.checkBoxKeepEmptyLines.AutoSize = true;
+      this.checkBoxKeepEmptyLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.checkBoxKeepEmptyLines.Location = new System.Drawing.Point(128, 345);
-      this.checkBoxKeepEmptyLines.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.checkBoxKeepEmptyLines.Margin = new System.Windows.Forms.Padding(4);
       this.checkBoxKeepEmptyLines.Name = "checkBoxKeepEmptyLines";
-      this.checkBoxKeepEmptyLines.Size = new System.Drawing.Size(138, 21);
+      this.checkBoxKeepEmptyLines.Size = new System.Drawing.Size(159, 24);
       this.checkBoxKeepEmptyLines.TabIndex = 11;
       this.checkBoxKeepEmptyLines.Text = "Keep empty lines";
       this.checkBoxKeepEmptyLines.UseVisualStyleBackColor = true;
@@ -447,7 +455,7 @@
       // 
       this.checkBoxTrimWhiteSpace.AutoSize = true;
       this.checkBoxTrimWhiteSpace.Location = new System.Drawing.Point(395, 345);
-      this.checkBoxTrimWhiteSpace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.checkBoxTrimWhiteSpace.Margin = new System.Windows.Forms.Padding(4);
       this.checkBoxTrimWhiteSpace.Name = "checkBoxTrimWhiteSpace";
       this.checkBoxTrimWhiteSpace.Size = new System.Drawing.Size(136, 21);
       this.checkBoxTrimWhiteSpace.TabIndex = 12;
@@ -458,7 +466,7 @@
       // 
       this.checkBoxDontDuplicateCharacters.AutoSize = true;
       this.checkBoxDontDuplicateCharacters.Location = new System.Drawing.Point(609, 345);
-      this.checkBoxDontDuplicateCharacters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.checkBoxDontDuplicateCharacters.Margin = new System.Windows.Forms.Padding(4);
       this.checkBoxDontDuplicateCharacters.Name = "checkBoxDontDuplicateCharacters";
       this.checkBoxDontDuplicateCharacters.Size = new System.Drawing.Size(330, 21);
       this.checkBoxDontDuplicateCharacters.TabIndex = 13;
