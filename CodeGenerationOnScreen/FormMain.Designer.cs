@@ -367,20 +367,21 @@
       // 
       // textBoxBeforeLine
       // 
-      this.textBoxBeforeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxBeforeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxBeforeLine.Location = new System.Drawing.Point(116, 300);
       this.textBoxBeforeLine.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxBeforeLine.Name = "textBoxBeforeLine";
-      this.textBoxBeforeLine.Size = new System.Drawing.Size(270, 26);
+      this.textBoxBeforeLine.Size = new System.Drawing.Size(270, 30);
       this.textBoxBeforeLine.TabIndex = 4;
       this.textBoxBeforeLine.Text = "\"";
       // 
       // textBoxAfterLine
       // 
+      this.textBoxAfterLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxAfterLine.Location = new System.Drawing.Point(508, 300);
       this.textBoxAfterLine.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxAfterLine.Name = "textBoxAfterLine";
-      this.textBoxAfterLine.Size = new System.Drawing.Size(316, 22);
+      this.textBoxAfterLine.Size = new System.Drawing.Size(316, 30);
       this.textBoxAfterLine.TabIndex = 5;
       this.textBoxAfterLine.Text = "\",";
       // 
@@ -410,7 +411,7 @@
       // 
       this.labelBeforeLine.AutoSize = true;
       this.labelBeforeLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelBeforeLine.Location = new System.Drawing.Point(12, 300);
+      this.labelBeforeLine.Location = new System.Drawing.Point(12, 305);
       this.labelBeforeLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.labelBeforeLine.Name = "labelBeforeLine";
       this.labelBeforeLine.Size = new System.Drawing.Size(90, 20);
@@ -430,7 +431,7 @@
       // 
       // buttonConvert
       // 
-      this.buttonConvert.Location = new System.Drawing.Point(832, 298);
+      this.buttonConvert.Location = new System.Drawing.Point(832, 302);
       this.buttonConvert.Margin = new System.Windows.Forms.Padding(4);
       this.buttonConvert.Name = "buttonConvert";
       this.buttonConvert.Size = new System.Drawing.Size(100, 28);
