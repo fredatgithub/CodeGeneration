@@ -88,7 +88,7 @@ namespace TranslationChecker
       }
       catch (Exception exception)
       {
-        MessageBox.Show("Error while loading xml file " + exception);
+        MessageBox.Show(Resources.Error_while_loading_XML_file + Punctuation.OneSpace + exception);
         CreateLanguageFile();
         return;
       }
@@ -115,7 +115,7 @@ namespace TranslationChecker
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show(Resources.Your_xml_file_has_duplicate_like + Punctuation.Colon + Punctuation.OneSpace + i.name);
         }
 
         if (!_languageDicoFr.ContainsKey(i.name))
@@ -124,7 +124,7 @@ namespace TranslationChecker
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show(Resources.Your_xml_file_has_duplicate_like + Punctuation.Colon + Punctuation.OneSpace + i.name);
         }
       }
     }
@@ -133,7 +133,7 @@ namespace TranslationChecker
     {
       List<string> minimumVersion = new List<string>
       {
-        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -312,14 +312,6 @@ namespace TranslationChecker
       }
 
       return LargeToolStripMenuItem.Checked ? "Large" : string.Empty;
-
-      // incase of any other size options:
-      //if (LargeToolStripMenuItem.Checked)
-      //{
-      //  return "Large";
-      //}
-
-      //return string.Empty;
     }
 
     private void SetDisplayOption(string option)

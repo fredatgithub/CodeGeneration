@@ -26,6 +26,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using CodeGenerationOnScreen.Properties;
+using Tools;
 
 namespace CodeGenerationOnScreen
 {
@@ -82,7 +83,7 @@ namespace CodeGenerationOnScreen
       }
       catch (Exception exception)
       {
-        MessageBox.Show("Error while loading xml file " + exception);
+        MessageBox.Show(Resources.Error_while_loading_XML_file + Punctuation.OneSpace + exception);
         CreateLanguageFile();
         return;
       }
@@ -109,7 +110,7 @@ namespace CodeGenerationOnScreen
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show(Resources.Your_xml_file_has_duplicate_like + Punctuation.Colon + Punctuation.OneSpace  + i.name);
         }
 
         if (!_languageDicoFr.ContainsKey(i.name))
@@ -118,7 +119,7 @@ namespace CodeGenerationOnScreen
         }
         else
         {
-          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+          MessageBox.Show(Resources.Your_xml_file_has_duplicate_like + Punctuation.Colon + Punctuation.OneSpace + i.name);
         }
       }
     }
@@ -127,7 +128,7 @@ namespace CodeGenerationOnScreen
     {
       List<string> minimumVersion = new List<string>
       {
-        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -442,17 +443,17 @@ namespace CodeGenerationOnScreen
       if (tb != ActiveControl) return;
       if (tb.Text == string.Empty)
       {
-        DisplayMessageOk(GetTranslatedString("ThereIs") + Space +
-          GetTranslatedString(errorMessage) + Space +
-          GetTranslatedString("ToCut") + Space, ToPascalCase(GetTranslatedString(errorMessage)),
+        DisplayMessageOk(Translate("ThereIs") + Space +
+          Translate(errorMessage) + Space +
+          Translate("ToCut") + Space, ToPascalCase(Translate(errorMessage)),
           MessageBoxButtons.OK);
         return;
       }
 
       if (tb.SelectedText == string.Empty)
       {
-        DisplayMessageOk(GetTranslatedString("NoTextHasBeenSelected"),
-          ToPascalCase(GetTranslatedString(errorMessage)), MessageBoxButtons.OK);
+        DisplayMessageOk(Translate("NoTextHasBeenSelected"),
+          ToPascalCase(Translate(errorMessage)), MessageBoxButtons.OK);
         return;
       }
 
@@ -465,15 +466,15 @@ namespace CodeGenerationOnScreen
       if (tb != ActiveControl) return;
       if (tb.Text == string.Empty)
       {
-        DisplayMessageOk(GetTranslatedString("ThereIsNothingToCopy") + Space,
-          ToPascalCase(GetTranslatedString(message)), MessageBoxButtons.OK);
+        DisplayMessageOk(Translate("ThereIsNothingToCopy") + Space,
+          ToPascalCase(Translate(message)), MessageBoxButtons.OK);
         return;
       }
 
       if (tb.SelectedText == string.Empty)
       {
-        DisplayMessageOk(GetTranslatedString("NoTextHasBeenSelected"),
-          ToPascalCase(GetTranslatedString(message)), MessageBoxButtons.OK);
+        DisplayMessageOk(Translate("NoTextHasBeenSelected"),
+          ToPascalCase(Translate(message)), MessageBoxButtons.OK);
         return;
       }
 
@@ -498,7 +499,7 @@ namespace CodeGenerationOnScreen
       return container.FirstOrDefault(control => control.Focused);
     }
 
-    private string GetTranslatedString(string index, string language)
+    private string Translate(string index, string language)
     {
       string result = string.Empty;
       switch (language.ToLower())
@@ -514,7 +515,7 @@ namespace CodeGenerationOnScreen
       return result;
     }
 
-    private string GetTranslatedString(string index)
+    private string Translate(string index)
     {
       string result = string.Empty;
       string language = frenchToolStripMenuItem.Checked ? "french" : "english";
@@ -538,8 +539,8 @@ namespace CodeGenerationOnScreen
     {
       if (textBoxSource.Text == string.Empty)
       {
-        DisplayMessageOk(GetTranslatedString("The source text cannot be empty"),
-          GetTranslatedString("Text Empty"), MessageBoxButtons.OK);
+        DisplayMessageOk(Translate("The source text cannot be empty"),
+          Translate("Text Empty"), MessageBoxButtons.OK);
         return;
       }
 
