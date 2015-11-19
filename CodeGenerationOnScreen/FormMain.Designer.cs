@@ -341,7 +341,7 @@
       // 
       this.textBoxSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxSource.Location = new System.Drawing.Point(116, 85);
       this.textBoxSource.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxSource.Multiline = true;
@@ -356,7 +356,7 @@
       this.textBoxTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.textBoxTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxTarget.Location = new System.Drawing.Point(116, 384);
       this.textBoxTarget.Margin = new System.Windows.Forms.Padding(4);
       this.textBoxTarget.Multiline = true;
@@ -431,6 +431,7 @@
       // 
       // buttonConvert
       // 
+      this.buttonConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonConvert.Location = new System.Drawing.Point(832, 302);
       this.buttonConvert.Margin = new System.Windows.Forms.Padding(4);
       this.buttonConvert.Name = "buttonConvert";
