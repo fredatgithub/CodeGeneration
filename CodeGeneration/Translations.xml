@@ -1590,4 +1590,44 @@
     <englishValue>a city</englishValue>
     <frenchValue>une ville</frenchValue>
   </term>
+  <term>
+    <name>First name</name>
+    <englishValue>First name</englishValue>
+    <frenchValue>Prénom</frenchValue>
+  </term>
+  <term>
+    <name>Last name</name>
+    <englishValue>Last name</englishValue>
+    <frenchValue>Nom de famille</frenchValue>
+  </term>
+  <term>
+    <name>Gender</name>
+    <englishValue>Gender</englishValue>
+    <frenchValue>Sexe</frenchValue>
+  </term>
+  <term>
+    <name>Simple level</name>
+    <englishValue>Simple level</englishValue>
+    <frenchValue>Niveau en simple</frenchValue>
+  </term>
+  <term>
+    <name>Double level</name>
+    <englishValue>Double level</englishValue>
+    <frenchValue>Niveau en double</frenchValue>
+  </term>
+  <term>
+    <name>Mixed level</name>
+    <englishValue>Mixed level</englishValue>
+    <frenchValue>Niveau en mixte</frenchValue>
+  </term>
+  <term>
+    <name>Player number</name>
+    <englishValue>Player number</englishValue>
+    <frenchValue>Numéro joueur</frenchValue>
+  </term>
+  <term>
+    <name>License number</name>
+    <englishValue>License number</englishValue>
+    <frenchValue>Numéro de licence</frenchValue>
+  </term>
 </terms>
