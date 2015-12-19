@@ -41,7 +41,7 @@ namespace ReplaceStringInManyProject
       checkBoxOption2.Checked = ConfigurationOptions2.Option2Name;
     }
 
-    internal ConfigurationOptions ConfigurationOptions2 { get; }
+    internal ConfigurationOptions ConfigurationOptions2 { get; set; }
 
     private void buttonOptionsOK_Click(object sender, EventArgs e)
     {

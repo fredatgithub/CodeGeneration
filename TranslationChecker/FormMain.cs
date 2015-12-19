@@ -478,7 +478,7 @@ namespace TranslationChecker
     {
       Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
       TextBox control = focusedControl as TextBox;
-      control?.SelectAll();
+      if (control != null) control.SelectAll();
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
