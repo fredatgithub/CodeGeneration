@@ -486,7 +486,6 @@ namespace CodeGenerationOnScreen
       if (tb != ActiveControl) return;
       var selectionIndex = tb.SelectionStart;
       tb.SelectedText = Clipboard.GetText();
-      //tb.Text = tb.Text.Insert(selectionIndex, Clipboard.GetText());
       tb.SelectionStart = selectionIndex + Clipboard.GetText().Length;
     }
 
